@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Catherine Gorodkova — AI artist, art director and model. Product, campaign, fashion film, animation and character shoots made without a camera.">
+<title>Catherine Gorodkova</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600&display=swap">
+<style>
+/* Layout: poster-grid multi-page. Bottom-fixed nav with upward dropdowns, sticky logo, hash-routed pages. */
+:root{
+  --red:#D60010; --blue:#002FA7; --white:#FFFFFF; --black:#0A0A0A; --paper:#F7F5F2; --line:var(--red);
+  --display:'Bebas Neue','Oswald','Impact',sans-serif;
+  --body:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --gl:max(16px,env(safe-area-inset-left,0px)); --gr:max(16px,env(safe-area-inset-right,0px));
+  --nav-h:64px; color-scheme:light;
+  --cur:url("data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22 viewBox=%220 0 64 64%22%3E%3Cdefs%3E%3CradialGradient id=%22fur%22 cx=%2250%25%22 cy=%2235%25%22 r=%2265%25%22%3E%3Cstop offset=%220%22 stop-color=%22%23FFFBF3%22/%3E%3Cstop offset=%22.55%22 stop-color=%22%23FBECD6%22/%3E%3Cstop offset=%221%22 stop-color=%22%23E6C39B%22/%3E%3C/radialGradient%3E%3CradialGradient id=%22peach%22 cx=%2250%25%22 cy=%2250%25%22 r=%2250%25%22%3E%3Cstop offset=%220%22 stop-color=%22%23EFB98A%22/%3E%3Cstop offset=%221%22 stop-color=%22%23EFB98A%22 stop-opacity=%220%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d=%22M19 21 L17 7 L29 14 Z%22 fill=%22%23ECAF7E%22 stroke=%22%236E4428%22 stroke-width=%221.5%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M45 21 L47 7 L35 14 Z%22 fill=%22%23ECAF7E%22 stroke=%22%236E4428%22 stroke-width=%221.5%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M21 19 L20 11 L27 15 Z%22 fill=%22%23F6CFAE%22/%3E%3Cpath d=%22M43 19 L44 11 L37 15 Z%22 fill=%22%23F6CFAE%22/%3E%3Cpath d=%22M32 13 C38 12 44 15 47 20 C52 22 56 27 58 33 C55 34 56 38 55 41 C56 44 53 47 50 48 C47 53 41 56 36 55 C34 58 30 58 28 55 C23 56 17 53 14 48 C11 47 8 44 9 41 C8 38 9 34 6 33 C8 27 12 22 17 20 C20 15 26 12 32 13 Z%22 fill=%22url%28%23fur%29%22 stroke=%22%236E4428%22 stroke-width=%221.5%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M10 36 L14 34 M11 41 L15 39 M54 36 L50 34 M53 41 L49 39 M21 50 L23 47 M43 50 L41 47%22 stroke=%22%23D9B38C%22 stroke-width=%221.2%22 stroke-linecap=%22round%22/%3E%3Cellipse cx=%2232%22 cy=%2220%22 rx=%2212%22 ry=%226%22 fill=%22url%28%23peach%29%22/%3E%3Cellipse cx=%2218%22 cy=%2233%22 rx=%227%22 ry=%228%22 fill=%22url%28%23peach%29%22/%3E%3Cellipse cx=%2246%22 cy=%2233%22 rx=%227%22 ry=%228%22 fill=%22url%28%23peach%29%22/%3E%3Cpath d=%22M22 36 Q32 32 42 36 Q40 46 32 49 Q24 46 22 36 Z%22 fill=%22%23FFFDF8%22/%3E%3Cellipse cx=%2225%22 cy=%2230.5%22 rx=%223%22 ry=%222.7%22 fill=%22%231E120A%22/%3E%3Cellipse cx=%2239%22 cy=%2230.5%22 rx=%223%22 ry=%222.7%22 fill=%22%231E120A%22/%3E%3Ccircle cx=%2226%22 cy=%2229.4%22 r=%22.9%22 fill=%22%23fff%22/%3E%3Ccircle cx=%2240%22 cy=%2229.4%22 r=%22.9%22 fill=%22%23fff%22/%3E%3Cpath d=%22M29 39.5 Q32 37 35 39.5 Q32 43 29 39.5 Z%22 fill=%22%237E5050%22/%3E%3Cpath d=%22M26 42.5 Q32 48 38 42.5 Q32 45.5 26 42.5 Z%22 fill=%22%232A1212%22/%3E%3Cpath d=%22M29.5 44.5 Q32 44 34.5 44.5 L34 50 Q32 52.5 30 50 Z%22 fill=%22%23E98AA0%22 stroke=%22%23C45A75%22 stroke-width=%22.8%22/%3E%3C/svg%3E") 24 30, auto;
+}
+*{box-sizing:border-box}
+html,body,a,button,label,summary{cursor:var(--cur)}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--red)}
+h1,h2,h3,h4,.disp{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:.92;margin:0;text-transform:uppercase;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.page{display:none}.page.on{display:block}
+.wrap{padding-left:var(--gl);padding-right:var(--gr)}
+
+.bar{scroll-snap-align:start;background:var(--red);color:var(--white);text-align:center;font-family:var(--display);font-size:14px;letter-spacing:.08em;padding:6px var(--gr) 6px var(--gl);position:relative;z-index:30}
+.logo{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;height:0;pointer-events:none}
+.logo a{pointer-events:auto;position:absolute;left:var(--gl);top:14px;font-family:var(--display);font-size:20px;white-space:nowrap;letter-spacing:.04em;color:var(--red);transition:color .3s}
+.logo a sup{font-size:10px;vertical-align:super}
+body[data-tone=white] .logo a{color:var(--white)}
+.tab{position:fixed;left:0;top:38%;z-index:45;background:var(--blue);color:var(--white);writing-mode:vertical-rl;transform:rotate(180deg);padding:18px 10px;font-family:var(--display);font-size:16px;letter-spacing:.1em;border-radius:0 6px 6px 0;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.tab:hover{background:var(--black)}
+.badge{position:fixed;right:calc(var(--gr) + 4px);bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom,0px));z-index:45;background:var(--black);color:var(--white);font-family:var(--display);font-size:15px;letter-spacing:.08em;padding:10px 16px;outline:2px solid var(--white)}
+.badge:hover{background:var(--red)}
+
+/* placeholders */
+.ph{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;background-size:cover}
+.ph::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");opacity:.45;mix-blend-mode:overlay;pointer-events:none}
+.ph::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 42%,rgba(255,255,255,.22),transparent 60%),linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.45));pointer-events:none}
+.ph span{position:relative;z-index:2}
+.ph span{font-family:var(--display);font-size:clamp(12px,1.3vw,15px);letter-spacing:.14em;opacity:.55;border:1px dashed currentColor;padding:6px 10px;text-align:center;max-width:90%}
+.ph.blue{background:radial-gradient(circle at 70% 20%,#2a5be0,var(--blue) 45%,#001a60);color:var(--white)}.ph.red{background:radial-gradient(circle at 30% 25%,#ff4a4a,var(--red) 45%,#6a0008);color:var(--white)}.ph.black{background:radial-gradient(circle at 50% 30%,#3a3a3a,var(--black) 60%);color:var(--white)}.ph.paper{background:radial-gradient(circle at 40% 30%,#fff,var(--paper) 50%,#d9d2cb);color:var(--black)}
+.ph.grad{background:radial-gradient(circle at 30% 30%,#ff3b3b,var(--red) 40%,#4a0007 100%);color:var(--white)}
+.ph.blob .b{position:absolute;width:22%;aspect-ratio:1/1.9;left:39%;top:18%;background:linear-gradient(90deg,#e9e7e2,#fff 40%,#d8d4ce);border-radius:12px 12px 8px 8px;box-shadow:0 40px 70px rgba(0,0,0,.45);z-index:1}
+.ph.blob .b::before{content:"";position:absolute;left:30%;top:-9%;width:40%;height:11%;background:#efece8;border-radius:4px 4px 0 0}
+.ph.fig .b{position:absolute;left:36%;top:8%;width:28%;height:92%;background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.55));border-radius:50% 50% 8% 8%/22% 22% 4% 4%;z-index:1;filter:blur(1px)}
+
+/* home */
+html{scroll-snap-type:none}body.snap{scroll-snap-type:y mandatory}html:has(body.snap){scroll-snap-type:y mandatory;scroll-padding-top:0}
+.stack{position:relative}.stack > section{position:sticky;top:0;scroll-snap-align:start;scroll-snap-stop:always;min-height:100vh}
+.journalrow,footer{scroll-snap-align:start}
+.panel{position:relative;min-height:100vh;display:grid;align-items:end;overflow:hidden;border-bottom:1px solid var(--line)}
+.panel .fill{position:absolute;inset:0}
+.panel .txt{position:relative;z-index:2;padding:40px var(--gr) 90px var(--gl);text-align:center;color:var(--white)}
+.panel .txt h2{font-size:clamp(34px,6vw,72px);margin-bottom:8px}
+.panel .txt p{max-width:62ch;margin:0 auto;font-size:13px;letter-spacing:.05em;text-transform:uppercase}
+.hero .txt{padding-bottom:110px}
+.slider{position:relative;border-bottom:1px solid var(--line);background:var(--white);display:grid;grid-template-rows:1fr auto auto}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);min-height:66vh}
+.slide a{position:relative;background:var(--white);min-height:40vh;display:block}
+.slider .txt{text-align:center;padding:22px var(--gr) 26px var(--gl)}
+.slider .txt h2{font-size:clamp(30px,4.5vw,56px)}
+.slider .txt p{margin:6px auto 0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;max-width:70ch}
+.dots{display:flex;gap:6px;justify-content:center;padding-bottom:16px}.dots i{display:block;width:60px;height:3px;background:#e5dcd8}.dots i.on{background:var(--red)}
+.manifesto{background:var(--red);color:var(--white);padding:60px var(--gr) 80px var(--gl);border-bottom:1px solid var(--white);display:grid;align-content:center}
+.manifesto h2{font-size:clamp(52px,11vw,160px);line-height:.88}
+.manifesto .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;margin-top:28px;max-width:1100px}
+.manifesto p{margin:0;font-size:14px;line-height:1.55}
+.more{display:inline-block;margin-top:28px;font-family:var(--display);font-size:18px;letter-spacing:.1em;border-bottom:2px solid currentColor}
+.modelblk{background:var(--blue);color:var(--white);display:grid;grid-template-columns:1.1fr .9fr;min-height:100vh;border-bottom:1px solid var(--line)}
+.modelblk .ph{position:relative;min-height:50vh}
+.modelblk .in{padding:60px var(--gr) 100px 48px;align-self:center}
+.modelblk h2{font-size:clamp(44px,7vw,110px)}
+.modelblk p{max-width:52ch;font-size:14px}
+.press{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-family:var(--display);font-size:22px;letter-spacing:.1em;opacity:.9}
+.press small{display:block;width:100%;font-size:12px;letter-spacing:.2em;opacity:.7}
+.journalrow{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.journalrow a{background:var(--white);display:block}
+.journalrow .img{position:relative;aspect-ratio:16/10}
+.journalrow h3{padding:14px var(--gl) 18px;font-size:20px;color:var(--red);letter-spacing:.04em}
+
+/* page headers (collection-style) */
+.phead{padding:70px var(--gr) 22px var(--gl)}
+.phead .row{display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline}
+.phead h1{font-size:clamp(36px,5vw,64px);color:var(--red)}
+.tabs{display:flex;flex-wrap:wrap;gap:4px 22px;font-family:var(--display);font-size:17px;letter-spacing:.06em}
+.tabs a{opacity:.6;transition:font-size .15s}.tabs a:hover{opacity:1;color:var(--red)}.tabs a.on{opacity:1;color:var(--red);font-size:1.6em}
+.phead p{max-width:78ch;font-size:13px;margin:14px 0 0;text-transform:uppercase;letter-spacing:.04em}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.card{position:relative;background:var(--white);display:flex;flex-direction:column;min-width:0}
+.card .img{position:relative;aspect-ratio:4/5;overflow:hidden}
+.card .img .ph{transition:opacity .2s ease}.card .img .ph.alt{opacity:0}.card:hover .img .ph.alt{opacity:1}
+.card .meta{display:flex;justify-content:space-between;gap:12px;padding:12px var(--gl);font-family:var(--display);font-size:20px;letter-spacing:.04em;text-transform:uppercase}
+.card .meta small{font-family:var(--body);font-size:11px;letter-spacing:.08em;opacity:.65;align-self:center;text-align:right}
+.card:hover .meta{color:var(--red)}
+.card .img::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 0 var(--black);transition:box-shadow .2s}.card:hover .img::after{box-shadow:inset 0 0 0 6px var(--black)}
+.card.nda .img::after{content:"NDA · AVAILABLE ON REQUEST";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-8deg);background:var(--red);color:var(--white);font-family:var(--display);font-size:clamp(14px,1.6vw,22px);letter-spacing:.14em;padding:8px 16px;outline:3px solid var(--white);white-space:nowrap}
+.card.nda .img .ph{filter:blur(6px);background:repeating-linear-gradient(135deg,#111 0 14px,#2a0003 14px 28px)}
+.empty{padding:40px var(--gl);font-family:var(--display);font-size:22px;letter-spacing:.06em;opacity:.5}
+
+/* project page (3 columns like their product page) */
+.proj{display:grid;grid-template-columns:1.15fr 1fr .62fr;border-bottom:1px solid var(--line)}
+.proj .gal{display:grid;gap:1px;background:var(--line)}
+.proj .gal div{position:relative;aspect-ratio:4/5;background:var(--white)}
+.proj .buy{position:sticky;top:0;align-self:start;padding:80px 28px 40px;border-left:1px solid var(--line);border-right:1px solid var(--line);text-align:center}
+.proj .buy h1{font-size:clamp(40px,4.6vw,64px);color:var(--red)}
+.proj .buy .by{font-family:var(--display);font-size:16px;letter-spacing:.1em;margin:8px 0 22px}
+.proj .buy .cta{display:block;background:var(--red);color:var(--white);font-family:var(--display);font-size:20px;letter-spacing:.1em;padding:14px;margin:18px 0 8px}
+.proj .buy .cta:hover{background:var(--blue)}
+.proj .buy h4{font-size:16px;letter-spacing:.1em;color:var(--red);margin:36px 0 8px;text-align:left}
+.proj .buy p{text-align:left;font-size:14px;margin:0 0 10px}
+.proj .notes{position:sticky;top:0;align-self:start;padding:80px 20px 40px;text-align:center}
+.proj .notes h3{font-size:30px;color:var(--red);margin-bottom:20px}
+.proj .notes h4{font-size:12px;letter-spacing:.14em;background:var(--red);color:var(--white);display:inline-block;padding:4px 10px;margin:18px 0 8px}
+.proj .notes li{list-style:none;font-size:14px;line-height:1.9}.proj .notes ul{padding:0;margin:0}
+.proj .notes li.k{font-family:var(--display);font-size:18px;letter-spacing:.06em;color:var(--red)}
+.back{display:inline-block;margin:0 0 18px;font-family:var(--display);font-size:14px;letter-spacing:.12em;opacity:.6}.back:hover{opacity:1;color:var(--blue)}
+
+/* text pages (persona-style: sticky image + scrolling text) */
+.split{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.split .pic{position:sticky;top:0;height:100vh}
+.split .pic .ph{position:absolute}
+.split .copy{padding:80px var(--gr) 80px 48px}
+.split.flip .pic{order:2}.split.flip .copy{padding:80px 48px 80px var(--gl)}
+.split h2{font-size:clamp(34px,4.4vw,60px);color:var(--red);margin-bottom:22px}
+.split h4{font-family:var(--display);font-size:17px;letter-spacing:.06em;color:var(--red);margin:26px 0 4px}
+.split p{max-width:60ch;font-size:14px;margin:0 0 12px}
+.split .q{font-style:italic;opacity:.75}
+.sub{display:flex;gap:22px;padding:0 var(--gr) 0 var(--gl);font-family:var(--display);font-size:17px;letter-spacing:.06em}
+
+/* journal archive (masonry) */
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:12px 0 28px}
+.chips a{border:1px solid var(--red);color:var(--red);padding:5px 16px;font-family:var(--display);font-size:16px;letter-spacing:.08em;border-radius:20px}
+.chips a.on,.chips a:hover{background:var(--red);color:var(--white)}
+.masonry{columns:3;column-gap:16px;padding:0 var(--gr) 40px var(--gl)}
+.masonry a{display:block;break-inside:avoid;margin-bottom:22px}
+.masonry .img{position:relative;width:100%}
+.masonry h3{font-size:18px;color:var(--red);margin-top:8px;letter-spacing:.04em}
+.article{max-width:860px;margin:0 auto;padding:80px var(--gr) 80px var(--gl)}
+.article h1{font-size:clamp(34px,4.5vw,56px);color:var(--red);margin-bottom:20px}
+.article .img{position:relative;aspect-ratio:16/9;margin:24px 0}
+.article p{max-width:68ch;font-size:15px}
+
+/* footer */
+footer{background:var(--red);color:var(--white);padding:40px var(--gr) calc(var(--nav-h) + 60px) var(--gl)}
+footer .big{font-size:clamp(56px,13vw,200px);line-height:.85;white-space:nowrap;overflow:hidden}
+footer .row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;margin-top:40px}
+footer .row p{margin:0;font-size:13px;max-width:44ch}
+footer h4{font-size:24px;letter-spacing:.06em;margin:0 0 10px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-family:var(--display);font-size:16px;letter-spacing:.08em}
+footer ul a:hover{color:var(--black)}
+footer .mail{display:flex;gap:8px;margin-top:18px;max-width:520px}
+footer input{flex:1;min-width:0;border:0;padding:12px 14px;font-family:var(--display);font-size:16px;letter-spacing:.06em;background:var(--white);color:var(--black)}
+footer .btn{background:var(--white);color:var(--red);border:0;padding:12px 20px;font-family:var(--display);font-size:16px;letter-spacing:.08em}
+footer .copy{margin-top:40px;font-size:11px;opacity:.8}
+
+/* bottom nav */
+.gnb{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--white);border-top:1px solid var(--line);height:calc(var(--nav-h) + env(safe-area-inset-bottom,0px));padding:0 var(--gr) env(safe-area-inset-bottom,0px) var(--gl);transition:transform .3s,opacity .2s}
+.gnb.hide{opacity:0;transform:translateY(8px);pointer-events:none}
+.gnb ul{list-style:none;margin:0;padding:0;display:flex;gap:0 clamp(14px,2.4vw,36px);height:var(--nav-h);align-items:stretch;overflow:visible}
+.gnb ul::-webkit-scrollbar{display:none}
+.gnb li{position:relative;display:flex;align-items:center;white-space:nowrap;font-family:var(--display);font-size:17px;letter-spacing:.08em}
+.gnb li > a{display:flex;align-items:center;height:100%;padding:0 12px;transition:background .12s,color .12s}
+.gnb li:hover > a,.gnb li:focus-within > a{background:var(--red);color:var(--white)}
+.gnb li.on > a{color:var(--red)}
+.gnb li.on:hover > a{color:var(--white)}
+.gnb li.right{margin-left:auto}
+.gnb .dd{position:absolute;left:0;bottom:100%;background:var(--red);color:var(--white);padding:12px 0;display:none;min-width:220px;flex-direction:column}
+.gnb .dd a{padding:7px 18px;font-size:15px;letter-spacing:.08em}
+.gnb .dd a:hover{background:var(--white);color:var(--red)}
+.gnb li:hover .dd,.gnb li:focus-within .dd{display:flex}
+
+/* contact drawer */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:70;opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--red);color:var(--white);z-index:71;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);padding:calc(28px + env(safe-area-inset-top,0px)) var(--gr) 28px 36px;overflow:auto}
+body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:none}
+.drawer .x{position:absolute;right:16px;top:calc(14px + env(safe-area-inset-top,0px));background:none;border:0;color:var(--white);font-size:26px;line-height:1}
+.drawer h2{font-size:clamp(44px,6vw,80px);margin-bottom:20px}
+.drawer .f{display:grid;gap:10px;margin-top:16px}
+.drawer input,.drawer textarea{width:100%;border:0;padding:12px 14px;font-family:var(--body);font-size:14px;background:var(--white);color:var(--black)}
+.drawer textarea{min-height:110px;resize:vertical}
+.drawer .ok{background:var(--black);color:var(--white);border:0;padding:14px;font-family:var(--display);font-size:18px;letter-spacing:.1em}
+.drawer .kw{margin-top:28px;display:grid;gap:8px;font-family:var(--display);font-size:22px;letter-spacing:.06em}
+.drawer .kw small{font-size:13px;letter-spacing:.14em;opacity:.8;margin-bottom:6px}.drawer .kw a:hover{color:var(--black)}
+
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:900px){
+  .slide{grid-template-columns:1fr}.slide a:nth-child(n+2){display:none}
+  .manifesto .cols,.split,.modelblk{grid-template-columns:1fr}
+  .split .pic{position:relative;height:56vh}.split.flip .pic{order:0}
+  .split .copy,.split.flip .copy{padding:40px var(--gr) 60px var(--gl)}
+  .modelblk .in{padding:36px var(--gr) 100px var(--gl)}
+  .grid{grid-template-columns:1fr 1fr}.journalrow{grid-template-columns:1fr}
+  .proj{grid-template-columns:1fr}.proj .buy,.proj .notes{position:relative;border:0;border-top:1px solid var(--line);padding:40px var(--gr) 30px var(--gl)}
+  .masonry{columns:2}
+  footer .row{grid-template-columns:1fr 1fr}
+  .tab{top:auto;bottom:calc(var(--nav-h) + 90px + env(safe-area-inset-bottom,0px))}
+  .gnb li.right{margin-left:0}.gnb ul{gap:0 6px}.gnb li{font-size:14px}.gnb li > a{padding:0 7px}.stack > section{position:relative}
+}
+@media (max-width:480px){.grid{grid-template-columns:1fr}.masonry{columns:1}}
+</style>
+</head>
+<body>
+
+<div class="bar">AI ARTIST · ART DIRECTOR · MODEL — WORLDWIDE</div>
+<div class="logo"><a href="#home">CATHERINE GORODKOVA<sup>®</sup></a></div>
+<a class="tab" href="#contact" data-open>HIRE ME</a>
+<a class="badge" href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener">INSTAGRAM</a>
+
+<main>
+
+<!-- HOME -->
+<section class="page" id="p-home">
+<div class="stack">
+  <section class="panel hero" data-tone="white">
+    <div class="fill"><div class="ph blue blob"><i class="b"></i><span>HERO — ГЛАВНЫЙ КАДР / ВИДЕО НА ВЕСЬ ЭКРАН</span></div></div>
+    <div class="txt"><h2>Everything here was made without a camera.</h2></div>
+  </section>
+  <section class="slider" data-tone="red">
+    <div class="track" id="track">
+      <div class="slide"><a href="#project-katisha"><div class="ph red fig"><i class="b"></i><span>КАТИША — КУПАЛЬНИКИ</span></div></a><a href="#project-btso"><div class="ph black blob"><i class="b"></i><span>BORNTOSTANDOUT — ПРЕДМЕТКА</span></div></a><a href="#project-domiverse"><div class="ph paper fig"><i class="b"></i><span>DOMIVERSE — ПЕРСОНАЖ</span></div></a></div>
+      <div class="slide"><a href="#project-pps"><div class="ph grad"><span>PPS</span></div></a><a href="#project-samhain"><div class="ph blue"><span>ТВОЙ МУЛЬТИК</span></div></a><a href="#project-karizma"><div class="ph black"><span>KARIZMA</span></div></a></div>
+      <div class="slide"><a href="#project-remagine"><div class="ph paper"><span>REMAGINE</span></div></a><a href="#project-domiverse"><div class="ph red"><span>DOMIVERSE</span></div></a><a href="#project-xose"><div class="ph blue"><span>STUDIO XOSE</span></div></a></div>
+    </div>
+    <div class="txt"><h2>Selected work</h2><p>Product · catalog · campaign · fashion film · animation · characters</p></div>
+    <div class="dots" id="dots"><i class="on"></i><i></i><i></i></div>
+  </section>
+  <section class="manifesto" data-tone="white">
+    <h2>I don't shoot.<br>I direct.</h2>
+    <div class="cols">
+      <p>Twelve years inside the fashion industry — on the runway, in front of the camera, and behind it. I've modelled in Paris, Milan and Asia, produced shoots, managed brands and helped put shows together. I know how a picture is made, because I've been every person on the set.</p>
+      <p>Now I make it alone. The camera is a neural network, the studio fits in a laptop, and the only limit is the idea. Product, catalog, campaign, fashion film, animation, character shoots — for brands, musicians and people who want a picture nobody else has.</p>
+    </div>
+    <a class="more" href="#manifesto">MANIFESTO →</a>
+  </section>
+  <section class="panel" data-tone="white">
+    <div class="fill"><div class="ph black"><span>SHOWREEL — ВИДЕО С АВТОПЛЕЕМ</span></div></div>
+    <div class="txt"><h2>Showreel 2026</h2></div>
+  </section>
+  <section class="modelblk" data-tone="white">
+    <div class="ph blue fig"><i class="b"></i><span>ТВОЁ ФОТО — ПОДИУМ / ЭДИТОРИАЛ</span></div>
+    <div class="in">
+      <h2>Fashion since 2014</h2>
+      <p>Runway, editorial, campaigns and street style — before the camera became a neural network. I know what a garment looks like when it moves, because I was the one moving in it. That's why my AI models don't look like mannequins.</p>
+      <div class="press"><small>SEEN IN</small><span>VOGUE</span><span>MODELS.COM</span><span>ADAM KATZ SINDING</span></div>
+      <a class="more" href="#press">PRESS →</a>
+    </div>
+  </section>
+</div>
+</section>
+
+<!-- WORK -->
+<section class="page" id="p-work" data-tone="red">
+  <div class="phead"><div class="row"><h1 id="work-title">Work</h1><nav class="tabs" id="work-tabs"></nav></div><p id="work-desc"></p></div>
+  <div class="grid" id="work-grid"></div>
+</section>
+
+<!-- PROJECT -->
+<section class="page" id="p-project" data-tone="red">
+  <div class="proj" id="proj"></div>
+</section>
+
+<!-- ABOUT pages -->
+<section class="page" id="p-press" data-tone="red">
+  <div class="phead"><div class="row"><h1>About</h1><nav class="tabs"><a href="#manifesto">MANIFESTO</a><a href="#story">STORY</a><a href="#press" class="on">PRESS</a></nav></div><p>Twelve years in fashion — runway, editorial, campaigns, street style. Publications and features.</p></div>
+  <div class="masonry" id="press-wall"></div>
+</section>
+<section class="page" id="p-manifesto" data-tone="red">
+  <div class="phead"><div class="row"><h1>About</h1><nav class="tabs"><a href="#manifesto" class="on">MANIFESTO</a><a href="#story">STORY</a><a href="#press">PRESS</a></nav></div></div>
+  <div class="split"><div class="pic"><div class="ph red"><span>ФОТО / КАДР</span></div></div>
+    <div class="copy"><h2>I don't shoot. I direct.</h2>
+      <h4>I believe a picture should exist before it's possible.</h4><p>Нейросеть — не замена съёмке. Это съёмка, у которой нет бюджета на невозможное, потому что невозможное бесплатно.</p>
+      <h4>I believe a model is a director who hasn't been handed the camera yet.</h4><p>Двенадцать лет на другой стороне объектива — это двенадцать лет насмотренности, которую не купишь.</p>
+      <h4>I believe the garment is the hero.</h4><p>Поэтому мои модели двигаются как люди, а ткань ведёт себя как ткань. Я знаю, как она ведёт себя, потому что носила.</p>
+      <h4>I believe in red, white and black.</h4><p>И в немного синего, когда очень хочется.</p>
+      <h4>I believe the brief is a starting point, not a cage.</h4><p>Лучшие кадры появляются в третьем варианте, которого никто не просил.</p>
+      <p class="q">Это черновик манифеста — перепишем твоими словами.</p>
+    </div></div>
+  <div class="split flip"><div class="pic"><div class="ph blue"><span>ВТОРОЙ КАДР</span></div></div>
+    <div class="copy"><h2>Why red</h2><p>Здесь — история цвета, как у них «A love letter to Korea». Почему красный, почему синий Кляйна, почему собака на курсоре.</p></div></div>
+</section>
+<section class="page" id="p-story" data-tone="red">
+  <div class="phead"><div class="row"><h1>About</h1><nav class="tabs"><a href="#manifesto">MANIFESTO</a><a href="#story" class="on">STORY</a><a href="#press">PRESS</a></nav></div></div>
+  <div class="split flip"><div class="pic"><div class="ph paper fig"><i class="b"></i><span>ТВОЙ ПОРТРЕТ</span></div></div>
+    <div class="copy"><h2>Why I do this</h2>
+      <h4>2014</h4><p>Первый кастинг, первый подиум. Потом Париж, Милан, Азия — восемь лет, в которых я видела, как собирается картинка, изнутри картинки.</p>
+      <h4>2022</h4><p>Переезд, пауза, другая сторона камеры — SMM, арт-дирекшн, съёмки для ресторанов и брендов.</p>
+      <h4>2025</h4><p>Нейросети. Впервые картинка, которую я видела в голове, стала появляться на экране без команды из двадцати человек.</p>
+      <h4>Now</h4><p>AI artist, art director и модель, которая возвращается на подиум. Всё сразу — потому что это одно и то же.</p>
+      <p class="q">Черновик — перепишем твоей историей.</p>
+    </div></div>
+</section>
+
+
+
+</main>
+
+<footer data-tone="white">
+  <div class="big disp">Born to direct.</div>
+  <div class="mail"><input id="nl" type="email" placeholder="EMAIL" aria-label="Email"><button class="btn" type="button">SUBSCRIBE</button></div>
+  <div class="row">
+    <div><p>Catherine Gorodkova — AI artist, art director and model. Product, catalog, campaign, fashion film and animation for brands, musicians and people who want a picture nobody else has.</p></div>
+    <div><h4>WORK</h4><ul><li><a href="#work-product">PRODUCT</a></li><li><a href="#work-catalog">CATALOG</a></li><li><a href="#work-campaign">CAMPAIGN</a></li><li><a href="#work-film">FASHION FILM</a></li><li><a href="#work-animation">ANIMATION</a></li><li><a href="#work-characters">CHARACTERS</a></li></ul></div>
+    <div><h4>ABOUT</h4><ul><li><a href="#manifesto">MANIFESTO</a></li><li><a href="#story">STORY</a></li><li><a href="#press">PRESS</a></li></ul></div>
+    <div><h4>SOCIAL</h4><ul><li><a href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener">INSTAGRAM</a></li><li><a href="https://t.me/katebolt" target="_blank" rel="noopener">TELEGRAM</a></li><li><a href="#contact" data-open>EMAIL</a></li></ul></div>
+  </div>
+  <div class="copy">© 2026 CATHERINE GORODKOVA®. All rights reserved.</div>
+</footer>
+
+<nav class="gnb" id="gnb" aria-label="Main">
+  <ul>
+    <li data-nav="work"><a href="#work-all">WORK</a>
+      <div class="dd"><a href="#work-all">ALL</a><a href="#work-product">PRODUCT</a><a href="#work-catalog">CATALOG</a><a href="#work-campaign">CAMPAIGN</a><a href="#work-film">FASHION FILM</a><a href="#work-animation">ANIMATION</a><a href="#work-characters">CHARACTERS</a><a href="#work-music">MUSIC</a><a href="#work-personal">PERSONAL</a><a href="#work-stage">STAGE VISUALS</a></div></li>
+    <li data-nav="about"><a href="#manifesto">ABOUT</a>
+      <div class="dd"><a href="#manifesto">MANIFESTO</a><a href="#story">STORY</a><a href="#press">PRESS</a></div></li>
+    <li class="right"><a href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener">INSTAGRAM</a></li>
+    <li><a href="#contact" data-open>CONTACT</a></li>
+  </ul>
+</nav>
+
+<div class="overlay" data-close></div>
+<aside class="drawer" id="contact" aria-label="Contact">
+  <button class="x" type="button" data-close aria-label="Close">×</button>
+  <h2>What are we making?</h2>
+  <form class="f" id="cf">
+    <input id="c-name" placeholder="Name / brand"><input id="c-mail" type="email" placeholder="Email or Instagram">
+    <textarea id="c-msg" placeholder="Product? Campaign? Film? Something nobody has done yet?"></textarea>
+    <button class="ok" type="submit">SEND</button>
+  </form>
+  <div class="kw"><small>OR JUST WRITE</small><span>catherineboltacheva@gmail.com</span><a href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener">INSTAGRAM @catherine_gorodkova</a><a href="https://t.me/katebolt" target="_blank" rel="noopener">TELEGRAM @katebolt</a></div>
+</aside>
+
+<script>
+(()=>{
+const CATS={all:'All',product:'Product',catalog:'Catalog',campaign:'Campaign',film:'Fashion film',animation:'Animation',characters:'Characters',music:'Music',personal:'Personal',stage:'Stage visuals'};
+const DESC={all:'Everything, newest first.',product:'Bottles, jars, candles and objects — shot in places that don\'t exist.',catalog:'Clean cutouts and on-model catalog shots for e-commerce.',campaign:'Full campaigns: concept, character, series of frames.',film:'Fashion video for brands. The garment moves, the camera moves.',animation:'Hand-drawn style animation. Stories, not loops.',characters:'AI shoots for people and personas — musicians, founders, characters.',music:'Videos and snippets for tracks.',personal:'My own films. Me in the frame.',stage:'Projection backdrops for concert tours. Under NDA — shown on request.'};
+const P=[
+ {s:'xose',t:'Studio Xose — Oat',c:'campaign',y:2026,cl:'Studio Xose',role:'Concept, art direction, images',a:'blue',b:'paper',d:'3D-printed sneaker, 12 frames, one object. A campaign shot in a place that was never built.'},
+ {s:'katisha',t:'Katisha — Swimwear',c:'campaign',y:2025,cl:'Katisha (concept)',role:'Concept, character, series',a:'red',b:'blue',d:'Swimwear campaign built from a brand map: one girl, one summer, six frames.'},
+ {s:'remagine',t:'Remagine — Footwear',c:'campaign',y:2025,cl:'Remagine Studio',role:'Brand map, concept, images',a:'paper',b:'red',d:'Footwear brand, from brand card to a full image series.'},
+ {s:'misbhv',t:'MISBHV — AW26',c:'film',y:2025,cl:'MISBHV (concept)',role:'Direction, motion',a:'black',b:'grad',d:'Fashion film. Leather, rain, a car that never stops.'},
+ {s:'pps',t:'Post Post Scriptum — Baggage',c:'film',y:2025,cl:'P.P.S.',role:'Direction, motion',a:'grad',b:'black',d:'Four looks on an endless airport carousel.'},
+ {s:'samhain',t:'Samhain',c:'animation',y:2025,cl:'Own project',role:'Story, drawing, animation',a:'blue',b:'paper',d:'A hand-drawn short about where Halloween comes from.'},
+ {s:'dna',t:'Brand DNA — McQueen',c:'animation',y:2025,cl:'Own series',role:'Story, drawing, animation',a:'paper',b:'black',d:'Drawn micro-films about the symbols of fashion houses.'},
+ {s:'mgk',t:'Machine Gun Kelly',c:'characters',y:2025,cl:'Concept',role:'Character shoot',a:'red',b:'black',d:'AI shoot for a persona: one character, one world, one series.'},
+ {s:'domiverse',t:'Domiverse × Condé Nast',c:'characters',y:2025,cl:'Domiverse',role:'Character shoot',a:'black',b:'blue',d:'Character shoot for a Condé Nast project.'},
+ {s:'borodenko',t:'Borodenko',c:'characters',y:2025,cl:'Borodenko',role:'Character shoot',a:'grad',b:'paper',d:'Persona shoot: looks, light, world.'},
+ {s:'karizma',t:'Call Me Karizma',c:'music',y:2025,cl:'Call Me Karizma',role:'Co-direction, motion',a:'black',b:'red',d:'Video for a track release.'},
+ {s:'manson',t:'Exit Wound — 15s',c:'music',y:2025,cl:'Snippet',role:'Direction, motion',a:'red',b:'black',d:'15-second snippet. One shot, no cuts.'},
+ {s:'btso',t:'BORNTOSTANDOUT — Halloween',c:'product',y:2026,cl:'BORNTOSTANDOUT (concept)',role:'Concept, product shoot, carousel',a:'black',b:'red',blob:1,d:'Halloween carousel for a Korean niche perfume house. Bottles in places they were never photographed.'},
+ {s:'sancti',t:'Sancti — Perfume',c:'product',y:2025,cl:'Liquides Imaginaires (study)',role:'Product shoot, motion',a:'paper',b:'red',blob:1,d:'Perfume bottle in a scene it was never photographed in.'},
+ {s:'cutouts',t:'Designer cutouts',c:'catalog',y:2025,cl:'Private designer',role:'Catalog renders',a:'paper',b:'blue',blob:1,d:'Clean renders of garments for an e-commerce site.'},
+ {s:'fall',t:'The Fall',c:'personal',y:2026,cl:'Own film',role:'Everything, and in the frame',a:'red',b:'black',d:'Kubrick, red, black, a staircase.'},
+ {s:'tour',t:'Concert tour backdrops',c:'stage',y:2025,cl:'Under NDA',role:'Visual direction',a:'black',b:'black',nda:1,d:'Projection backdrops for a concert tour. Shown on request.'},
+];
+const ph=(col,label,blob,alt)=>`<div class="ph ${col}${blob?' blob':''}${alt?' alt':''}">${blob?'<i class="b"></i>':''}<span>${label}</span></div>`;
+const card=p=>`<a class="card${p.nda?' nda':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${ph(p.a,p.t,p.blob)}${ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()} · ${p.y}</small></div></a>`;
+
+const pages=[...document.querySelectorAll('.page')];
+const gnbItems=[...document.querySelectorAll('.gnb li[data-nav]')];
+function show(id,nav){document.body.classList.toggle('snap',id==='home');pages.forEach(p=>p.classList.toggle('on',p.id==='p-'+id));gnbItems.forEach(l=>l.classList.toggle('on',l.dataset.nav===nav));window.scrollTo(0,0);setTone();}
+function renderWork(cat){
+  if(!CATS[cat])cat='all';
+  document.getElementById('work-title').textContent=cat==='all'?'Work':CATS[cat];
+  document.getElementById('work-desc').textContent=DESC[cat];
+  document.getElementById('work-tabs').innerHTML=Object.entries(CATS).map(([k,v])=>`<a href="#work-${k}" class="${k===cat?'on':''}">${v.toUpperCase()}</a>`).join('');
+  const list=P.filter(p=>cat==='all'||p.c===cat);
+  document.getElementById('work-grid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">Coming soon.</div>';
+}
+function renderProject(slug){
+  const p=P.find(x=>x.s===slug)||P[0];
+  document.getElementById('proj').innerHTML=`
+   <div class="gal">${[1,2,3,4].map(i=>`<div>${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('')}</div>
+   <div class="buy"><a class="back" href="#work-${p.c}">← ${CATS[p.c].toUpperCase()}</a><h1>${p.t}</h1><div class="by">BY CATHERINE GORODKOVA · ${p.y}</div>
+     <a class="cta" href="#contact" data-open>MAKE SOMETHING LIKE THIS</a>
+     <h4>About</h4><p>${p.d}</p><h4>Process</h4><p>Бриф → карта бренда → персонаж → серия кадров → motion. Здесь будет короткий текст про то, как делался именно этот проект.</p></div>
+   <div class="notes"><h3>Credits</h3><h4>CLIENT</h4><ul><li class="k">${p.cl}</li></ul><h4>ROLE</h4><ul><li>${p.role}</li></ul><h4>FORMAT</h4><ul><li>${CATS[p.c]}</li><li>${p.c==='film'||p.c==='music'||p.c==='animation'?'Video · 9:16 / 16:9':'Stills · 4:5 / 1:1'}</li></ul><h4>YEAR</h4><ul><li class="k">${p.y}</li></ul></div>`;
+  document.querySelectorAll('#proj [data-open]').forEach(a=>a.addEventListener('click',open));
+}
+function wall(id,items){document.getElementById(id).innerHTML=items.map(([h,col,r,href])=>`<a href="${href||'#article-1'}"><div class="img" style="aspect-ratio:${r}">${ph(col,h)}</div><h3>${h}</h3></a>`).join('');}
+function route(){
+  const h=(location.hash||'#home').slice(1);
+  if(h==='contact'){document.body.classList.add('open');return;}
+  if(h.startsWith('work')){renderWork(h.replace(/^work-?/,'')||'all');show('work','work');return;}
+  if(h.startsWith('project-')){renderProject(h.slice(8));show('project','work');return;}
+  if(['manifesto','story','press'].includes(h)){show(h,'about');return;}
+  show('home',null);
+}
+wall('press-wall',[['VOGUE','red','3/4','#press'],['MODELS.COM','paper','1/1','#press'],['ADAM KATZ SINDING — STREET STYLE','black','2/3','#press'],['FASHION WEEK','blue','4/5','#press'],['MAGAZINE','paper','3/4','#press'],['EDITORIAL','red','1/1','#press']]);
+
+const gnb=document.getElementById('gnb');let last=0;
+addEventListener('scroll',()=>{const y=window.scrollY;if(y>last+40)gnb.classList.add('hide');else if(y<last-2)gnb.classList.remove('hide');else return;last=Math.max(y,0);},{passive:true});
+function setTone(){const probe=24+(parseFloat(getComputedStyle(document.documentElement).paddingTop)||0);let t='red';for(const s of document.querySelectorAll('.page.on [data-tone], .page.on[data-tone], footer')){const r=s.getBoundingClientRect();if(r.top<=probe&&r.bottom>probe)t=s.dataset.tone||'white';}document.body.dataset.tone=t;}
+addEventListener('scroll',setTone,{passive:true});
+const track=document.getElementById('track'),dots=[...document.querySelectorAll('#dots i')];
+track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,k)=>d.classList.toggle('on',k===i));},{passive:true});
+function open(e){e.preventDefault();document.body.classList.add('open');}
+document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',open));
+document.querySelectorAll('[data-close]').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('open')));
+addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('open');});
+document.getElementById('cf').addEventListener('submit',e=>{e.preventDefault();e.target.querySelector('.ok').textContent='SENT — DEMO';});
+addEventListener('hashchange',route);
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.hash===location.hash&&!a.hasAttribute('data-open')){e.preventDefault();route();}});
+route();
+})();
+</script>
+
+</body>
+</html>
