@@ -61,7 +61,7 @@ html{scroll-snap-type:none}body.snap{scroll-snap-type:y mandatory}html:has(body.
 .panel .txt{position:relative;z-index:2;padding:40px var(--gr) 90px var(--gl);text-align:center;color:var(--white)}
 .panel .txt h2{font-size:clamp(34px,6vw,72px);margin-bottom:8px}
 .panel .txt p{max-width:62ch;margin:0 auto;font-size:13px;letter-spacing:.05em;text-transform:uppercase}
-.hero .txt{padding-bottom:110px}
+.hero .txt{padding-bottom:110px;pointer-events:none}.hero-link{position:absolute;inset:0;z-index:1}
 .slider{position:relative;border-bottom:1px solid var(--line);background:var(--white);display:grid;grid-template-rows:1fr auto auto}
 .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.track::-webkit-scrollbar{display:none}
 .slide{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);min-height:66vh}
@@ -237,8 +237,9 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 <section class="page" id="p-home">
 <div class="stack">
   <section class="panel hero" data-tone="white">
-    <div class="fill"><div class="ph blue blob"><i class="b"></i><span>HERO — ГЛАВНЫЙ КАДР / ВИДЕО НА ВЕСЬ ЭКРАН</span></div></div>
-    <div class="txt"><h2>Everything here was made without a camera.</h2></div>
+    <div class="fill"><video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/home/hero-poster.jpg"><source src="media/home/hero-m.mp4" type="video/mp4" media="(max-width:900px)"><source src="media/home/hero.mp4" type="video/mp4"></video></div>
+    <a class="hero-link" href="#project-misbhv" aria-label="MISBHV"></a>
+    <div class="txt"><h2>Everything here was made without a camera.</h2><p>MISBHV — fashion film</p></div>
   </section>
   <section class="slider" data-tone="red">
     <div class="track" id="track">
@@ -361,7 +362,7 @@ const P=[
  {s:'xose',t:'Studio Xose — Oat',c:'campaign',y:2026,cl:'Studio Xose',role:'Concept, art direction, images',a:'blue',b:'paper',d:'3D-printed sneaker, 12 frames, one object. A campaign shot in a place that was never built.'},
  {s:'katisha',t:'KatishaLikeIt — Palm Springs',c:'campaign',y:2025,cl:'KatishaLikeIt (concept)',role:'Concept, casting, art direction, images',a:'red',b:'blue',imgs:['01','02','03','04','05','06','07','08','09','10','11','12','13','14'],wide:['03','07','12','14'],d:'Swimwear campaign in a Palm Springs that was never built. Fourteen frames, five girls, one endless afternoon.'},
  {s:'remagine',t:'Remagine — Footwear',c:'campaign',y:2025,cl:'Remagine Studio',role:'Brand map, concept, images',a:'paper',b:'red',d:'Footwear brand, from brand card to a full image series.'},
- {s:'misbhv',t:'MISBHV — AW26',c:'film',y:2025,cl:'MISBHV (concept)',role:'Direction, motion',a:'black',b:'grad',d:'Fashion film. Leather, rain, a car that never stops.'},
+ {s:'misbhv',t:'MISBHV — AW26',c:'film',y:2025,cl:'MISBHV (concept)',role:'Direction, motion',a:'black',b:'grad',imgs:['video'],d:'Fashion film. Leather, rain, heels on wet asphalt. Shot nowhere, at night.'},
  {s:'pps',t:'Post Post Scriptum — Baggage',c:'film',y:2025,cl:'P.P.S.',role:'Direction, motion',a:'grad',b:'black',d:'Four looks on an endless airport carousel.'},
  {s:'samhain',t:'Samhain',c:'animation',y:2025,cl:'Own project',role:'Story, drawing, animation',a:'blue',b:'paper',d:'A hand-drawn short about where Halloween comes from.'},
  {s:'dna',t:'Brand DNA — McQueen',c:'animation',y:2025,cl:'Own series',role:'Story, drawing, animation',a:'paper',b:'black',d:'Drawn micro-films about the symbols of fashion houses.'},
@@ -376,7 +377,7 @@ const P=[
  {s:'fall',t:'The Fall',c:'personal',y:2026,cl:'Own film',role:'Everything, and in the frame',a:'red',b:'black',d:'Kubrick, red, black, a staircase.'},
  {s:'tour',t:'Concert tour backdrops',c:'stage',y:2025,cl:'Under NDA',role:'Visual direction',a:'black',b:'black',nda:1,d:'Projection backdrops for a concert tour. Shown on request.'},
 ];
-const img=(p,i,alt)=>`<img class="pic-img${alt?' alt':''}" src="media/work/${p.s}/${p.imgs[i]}.jpg" alt="${p.t}" loading="lazy">`;
+const img=(p,i,alt)=>{const n=p.imgs[Math.min(i,p.imgs.length-1)];const src=n&&n.startsWith('video')?`media/work/${p.s}/poster.jpg`:`media/work/${p.s}/${n}.jpg`;return `<img class="pic-img${alt?' alt':''}" src="${src}" alt="${p.t}" loading="lazy">`;};
 const ph=(col,label,blob,alt)=>`<div class="ph ${col}${blob?' blob':''}${alt?' alt':''}">${blob?'<i class="b"></i>':''}<span>${label}</span></div>`;
 const card=p=>`<a class="card${p.nda?' nda':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs?img(p,p.cover??0)+img(p,p.hover??1,1):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()} · ${p.y}</small></div></a>`;
 
@@ -393,7 +394,7 @@ function renderWork(cat){
 }
 function renderProject(slug){
   const p=P.find(x=>x.s===slug)||P[0];
-  const frames=p.imgs?p.imgs.map(n=>`<div class="fr${(p.wide||[]).includes(n)?' wide':''}"><img src="media/work/${p.s}/${n}.jpg" alt="${p.t}" loading="eager"></div>`).join(''):[1,2,3,4].map(i=>`<div class="fr" style="width:33.34vw">${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('');
+  const frames=p.imgs?p.imgs.map(n=>n.startsWith('video')?`<div class="fr wide"><video class="pic-img" autoplay muted loop playsinline controls poster="media/work/${p.s}/poster.jpg" style="object-fit:contain;background:var(--black)"><source src="media/work/${p.s}/${n}.mp4" type="video/mp4"></video></div>`:`<div class="fr${(p.wide||[]).includes(n)?' wide':''}"><img src="media/work/${p.s}/${n}.jpg" alt="${p.t}" loading="eager"></div>`).join(''):[1,2,3,4].map(i=>`<div class="fr" style="width:33.34vw">${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('');
   document.getElementById('proj').innerHTML=`
    <div class="strip" id="strip"><div class="rail" id="rail">${frames}</div><button class="arr l" id="arrL" aria-label="Previous">←</button><button class="arr r" id="arrR" aria-label="Next">→</button><div class="cnt" id="cnt"></div></div>
    <div class="pinfo">
@@ -434,7 +435,7 @@ addEventListener('scroll',setTone,{passive:true});
 // live trio: each cell cycles through its project's frames
 document.querySelectorAll('.slide a[href^="#project-"]').forEach((a,k)=>{
   const p=P.find(x=>'#project-'+x.s===a.getAttribute('href'));if(!p||!p.imgs||p.imgs.length<2)return;
-  const pool=p.imgs.filter(n=>!(p.wide||[]).includes(n));if(pool.length<2)return;
+  const pool=p.imgs.filter(n=>!(p.wide||[]).includes(n)&&!n.startsWith('video'));if(pool.length<2)return;
   const start=p.cover??0;let i=pool.indexOf(p.imgs[start]);if(i<0)i=0;
   a.innerHTML=`<img class="pic-img" src="media/work/${p.s}/${pool[i]}.jpg" alt="${p.t}"><img class="pic-img off" alt="">`;
   const [A,B]=a.querySelectorAll('img');let front=A,back=B;
