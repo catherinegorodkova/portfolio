@@ -65,7 +65,8 @@ html{scroll-snap-type:none}body.snap{scroll-snap-type:y mandatory}html:has(body.
 .slider{position:relative;border-bottom:1px solid var(--line);background:var(--white);display:grid;grid-template-rows:1fr auto auto}
 .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.track::-webkit-scrollbar{display:none}
 .slide{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);min-height:66vh}
-.slide a{position:relative;background:var(--white);min-height:40vh;display:block}
+.slide a{position:relative;background:var(--black);min-height:40vh;display:block;overflow:hidden}
+.slide a .pic-img{transition:opacity .9s ease}.slide a .pic-img.off{opacity:0}
 .slider .txt{text-align:center;padding:22px var(--gr) 26px var(--gl)}
 .slider .txt h2{font-size:clamp(30px,4.5vw,56px)}
 .slider .txt p{margin:6px auto 0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;max-width:70ch}
@@ -108,23 +109,30 @@ html{scroll-snap-type:none}body.snap{scroll-snap-type:y mandatory}html:has(body.
 .card.nda .img .ph{filter:blur(6px);background:repeating-linear-gradient(135deg,#111 0 14px,#2a0003 14px 28px)}
 .empty{padding:40px var(--gl);font-family:var(--display);font-size:22px;letter-spacing:.06em;opacity:.5}
 
-/* project page (3 columns like their product page) */
-.proj{display:grid;grid-template-columns:1.15fr 1fr .62fr;border-bottom:1px solid var(--line)}
-.proj .gal{display:grid;gap:1px;background:var(--line)}
-.proj .gal div{position:relative;aspect-ratio:4/5;background:var(--white)}
-.proj .buy{position:sticky;top:0;align-self:start;padding:80px 28px 40px;border-left:1px solid var(--line);border-right:1px solid var(--line);text-align:center}
-.proj .buy h1{font-size:clamp(40px,4.6vw,64px);color:var(--red)}
-.proj .buy .by{font-family:var(--display);font-size:16px;letter-spacing:.1em;margin:8px 0 22px}
-.proj .buy .cta{display:block;background:var(--red);color:var(--white);font-family:var(--display);font-size:20px;letter-spacing:.1em;padding:14px;margin:18px 0 8px}
-.proj .buy .cta:hover{background:var(--blue)}
-.proj .buy h4{font-size:16px;letter-spacing:.1em;color:var(--red);margin:36px 0 8px;text-align:left}
-.proj .buy p{text-align:left;font-size:14px;margin:0 0 10px}
-.proj .notes{position:sticky;top:0;align-self:start;padding:80px 20px 40px;text-align:center}
-.proj .notes h3{font-size:30px;color:var(--red);margin-bottom:20px}
-.proj .notes h4{font-size:12px;letter-spacing:.14em;background:var(--red);color:var(--white);display:inline-block;padding:4px 10px;margin:18px 0 8px}
-.proj .notes li{list-style:none;font-size:14px;line-height:1.9}.proj .notes ul{padding:0;margin:0}
-.proj .notes li.k{font-family:var(--display);font-size:18px;letter-spacing:.06em;color:var(--red)}
-.back{display:inline-block;margin:0 0 18px;font-family:var(--display);font-size:14px;letter-spacing:.12em;opacity:.6}.back:hover{opacity:1;color:var(--blue)}
+/* project page: horizontal strip + info below */
+.proj{border-bottom:1px solid var(--line)}
+.strip{position:relative;overflow:hidden;background:var(--black);height:min(82vh,900px)}
+.strip .rail{display:flex;height:100%;will-change:transform;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.strip .fr{flex:0 0 auto;height:100%;position:relative;border-right:1px solid var(--line)}
+.strip .fr{width:calc(100vw/3)}.strip .fr img{height:100%;width:100%;display:block;object-fit:cover}
+.strip .fr.wide{width:100vw}.strip .fr.wide img{object-fit:contain;background:var(--black)}
+.strip .nav{position:absolute;top:0;bottom:0;width:50%;z-index:3}
+.strip .nav.l{left:0;cursor:w-resize}.strip .nav.r{right:0;cursor:e-resize}
+.strip .cnt{position:absolute;right:var(--gr);bottom:14px;z-index:4;color:var(--white);font-family:var(--display);font-size:16px;letter-spacing:.14em;mix-blend-mode:difference}
+.strip .arr{position:absolute;top:50%;transform:translateY(-50%);z-index:4;background:var(--red);color:var(--white);width:44px;height:44px;display:grid;place-items:center;font-size:22px;border:0;opacity:.95}
+.strip .arr.l{left:0}.strip .arr.r{right:0}.strip .arr:hover{background:var(--blue)}
+.pinfo{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:0;border-top:1px solid var(--line)}
+.pinfo > div{padding:34px var(--gr) 40px var(--gl);min-width:0}
+.pinfo > div + div{border-left:1px solid var(--line)}
+.pinfo h1{font-size:clamp(36px,4vw,60px);color:var(--red)}
+.pinfo .by{font-family:var(--display);font-size:15px;letter-spacing:.1em;margin:8px 0 18px}
+.pinfo .cta{display:inline-block;background:var(--red);color:var(--white);font-family:var(--display);font-size:18px;letter-spacing:.1em;padding:12px 22px}
+.pinfo .cta:hover{background:var(--blue)}
+.pinfo h4{font-size:15px;letter-spacing:.12em;color:var(--red);margin:0 0 8px}
+.pinfo p{font-size:14px;margin:0 0 14px;max-width:52ch}
+.pinfo .cr{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:13px}
+.pinfo .cr b{font-family:var(--display);font-weight:400;font-size:13px;letter-spacing:.14em;color:var(--red)}
+.back{display:inline-block;margin:0 0 14px;font-family:var(--display);font-size:14px;letter-spacing:.12em;opacity:.6}.back:hover{opacity:1;color:var(--blue)}
 
 /* text pages (persona-style: sticky image + scrolling text) */
 .split{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
@@ -190,6 +198,11 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 .drawer input,.drawer textarea{width:100%;border:0;padding:12px 14px;font-family:var(--body);font-size:14px;background:var(--white);color:var(--black)}
 .drawer textarea{min-height:110px;resize:vertical}
 .drawer .ok{background:var(--black);color:var(--white);border:0;padding:14px;font-family:var(--display);font-size:18px;letter-spacing:.1em}
+.drawer .links{display:grid;gap:0;margin-top:30px;border-top:1px solid rgba(255,255,255,.4)}
+.drawer .links a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.4);font-family:var(--display);font-size:clamp(22px,3vw,34px);letter-spacing:.06em}
+.drawer .links a small{font-family:var(--body);font-size:12px;letter-spacing:.14em;opacity:.8}
+.drawer .links a:hover{color:var(--black)}
+.drawer .cp{background:var(--white);color:var(--red);border:0;font-family:var(--display);font-size:14px;letter-spacing:.12em;padding:8px 12px}
 .drawer .kw{margin-top:28px;display:grid;gap:8px;font-family:var(--display);font-size:22px;letter-spacing:.06em}
 .drawer .kw small{font-size:13px;letter-spacing:.14em;opacity:.8;margin-bottom:6px}.drawer .kw a:hover{color:var(--black)}
 
@@ -202,7 +215,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
   .split .copy,.split.flip .copy{padding:40px var(--gr) 60px var(--gl)}
   .modelblk .in{padding:36px var(--gr) 100px var(--gl)}
   .grid{grid-template-columns:1fr 1fr}.journalrow{grid-template-columns:1fr}
-  .proj{grid-template-columns:1fr}.proj .buy,.proj .notes{position:relative;border:0;border-top:1px solid var(--line);padding:40px var(--gr) 30px var(--gl)}
+  .pinfo{grid-template-columns:1fr}.pinfo > div + div{border-left:0;border-top:1px solid var(--line)}.strip{height:70vh}.strip .fr{width:100vw}.strip .fr img{object-fit:contain;background:var(--black)}
   .masonry{columns:2}
   footer .row{grid-template-columns:1fr 1fr}
   .tab{top:auto;bottom:calc(var(--nav-h) + 90px + env(safe-area-inset-bottom,0px))}
@@ -332,12 +345,12 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 <aside class="drawer" id="contact" aria-label="Contact">
   <button class="x" type="button" data-close aria-label="Close">×</button>
   <h2>What are we making?</h2>
-  <form class="f" id="cf" action="https://formspree.io/f/xdeelbba" method="POST">
-    <input id="c-name" name="name" placeholder="Name / brand" required><input id="c-mail" name="contact" placeholder="Email or Instagram" required>
-    <textarea id="c-msg" name="message" placeholder="Product? Campaign? Film? Something nobody has done yet?" required></textarea>
-    <button class="ok" type="submit">SEND</button>
-  </form>
-  <div class="kw"><small>OR JUST WRITE</small><span>catherineboltacheva@gmail.com</span><a href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener">INSTAGRAM @catherine_gorodkova</a><a href="https://t.me/katebolt" target="_blank" rel="noopener">TELEGRAM @katebolt</a></div>
+  <p style="font-size:14px;max-width:42ch;margin:0">Product, campaign, film, animation, a character — or something nobody has done yet. Write me anywhere:</p>
+  <div class="links">
+    <a href="mailto:catherineboltacheva@gmail.com"><span>EMAIL</span><small>catherineboltacheva@gmail.com</small><button class="cp" type="button" data-copy="catherineboltacheva@gmail.com">COPY</button></a>
+    <a href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener"><span>INSTAGRAM</span><small>@catherine_gorodkova</small></a>
+    <a href="https://t.me/katebolt" target="_blank" rel="noopener"><span>TELEGRAM</span><small>@katebolt</small></a>
+  </div>
 </aside>
 
 <script>
@@ -346,7 +359,7 @@ const CATS={all:'All',product:'Product',catalog:'Catalog',campaign:'Campaign',fi
 const DESC={all:'Everything, newest first.',product:'Bottles, jars, candles and objects — shot in places that don\'t exist.',catalog:'Clean cutouts and on-model catalog shots for e-commerce.',campaign:'Full campaigns: concept, character, series of frames.',film:'Fashion video for brands. The garment moves, the camera moves.',animation:'Hand-drawn style animation. Stories, not loops.',characters:'AI shoots for people and personas — musicians, founders, characters.',music:'Videos and snippets for tracks.',personal:'My own films. Me in the frame.',stage:'Projection backdrops for concert tours. Under NDA — shown on request.'};
 const P=[
  {s:'xose',t:'Studio Xose — Oat',c:'campaign',y:2026,cl:'Studio Xose',role:'Concept, art direction, images',a:'blue',b:'paper',d:'3D-printed sneaker, 12 frames, one object. A campaign shot in a place that was never built.'},
- {s:'katisha',t:'KatishaLikeIt — Palm Springs',c:'campaign',y:2025,cl:'KatishaLikeIt (concept)',role:'Concept, casting, art direction, images',a:'red',b:'blue',imgs:['01','02','03','04','05','06','07','08','09','10','11','12','13','14'],d:'Swimwear campaign in a Palm Springs that was never built. Fourteen frames, five girls, one endless afternoon.'},
+ {s:'katisha',t:'KatishaLikeIt — Palm Springs',c:'campaign',y:2025,cl:'KatishaLikeIt (concept)',role:'Concept, casting, art direction, images',a:'red',b:'blue',imgs:['01','02','03','04','05','06','07','08','09','10','11','12','13','14'],wide:['03','07','12','14'],d:'Swimwear campaign in a Palm Springs that was never built. Fourteen frames, five girls, one endless afternoon.'},
  {s:'remagine',t:'Remagine — Footwear',c:'campaign',y:2025,cl:'Remagine Studio',role:'Brand map, concept, images',a:'paper',b:'red',d:'Footwear brand, from brand card to a full image series.'},
  {s:'misbhv',t:'MISBHV — AW26',c:'film',y:2025,cl:'MISBHV (concept)',role:'Direction, motion',a:'black',b:'grad',d:'Fashion film. Leather, rain, a car that never stops.'},
  {s:'pps',t:'Post Post Scriptum — Baggage',c:'film',y:2025,cl:'P.P.S.',role:'Direction, motion',a:'grad',b:'black',d:'Four looks on an endless airport carousel.'},
@@ -380,13 +393,28 @@ function renderWork(cat){
 }
 function renderProject(slug){
   const p=P.find(x=>x.s===slug)||P[0];
+  const frames=p.imgs?p.imgs.map(n=>`<div class="fr${(p.wide||[]).includes(n)?' wide':''}"><img src="media/work/${p.s}/${n}.jpg" alt="${p.t}" loading="eager"></div>`).join(''):[1,2,3,4].map(i=>`<div class="fr" style="width:33.34vw">${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('');
   document.getElementById('proj').innerHTML=`
-   <div class="gal">${p.imgs?p.imgs.map((_,i)=>`<div>${img(p,i)}</div>`).join(''):[1,2,3,4].map(i=>`<div>${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('')}</div>
-   <div class="buy"><a class="back" href="#work-${p.c}">← ${CATS[p.c].toUpperCase()}</a><h1>${p.t}</h1><div class="by">BY CATHERINE GORODKOVA · ${p.y}</div>
-     <a class="cta" href="#contact" data-open>MAKE SOMETHING LIKE THIS</a>
-     <h4>About</h4><p>${p.d}</p><h4>Process</h4><p>Бриф → карта бренда → персонаж → серия кадров → motion. Здесь будет короткий текст про то, как делался именно этот проект.</p></div>
-   <div class="notes"><h3>Credits</h3><h4>CLIENT</h4><ul><li class="k">${p.cl}</li></ul><h4>ROLE</h4><ul><li>${p.role}</li></ul><h4>FORMAT</h4><ul><li>${CATS[p.c]}</li><li>${p.c==='film'||p.c==='music'||p.c==='animation'?'Video · 9:16 / 16:9':'Stills · 4:5 / 1:1'}</li></ul><h4>YEAR</h4><ul><li class="k">${p.y}</li></ul></div>`;
+   <div class="strip" id="strip"><div class="rail" id="rail">${frames}</div><button class="arr l" id="arrL" aria-label="Previous">←</button><button class="arr r" id="arrR" aria-label="Next">→</button><div class="cnt" id="cnt"></div></div>
+   <div class="pinfo">
+     <div><a class="back" href="#work-${p.c}">← ${CATS[p.c].toUpperCase()}</a><h1>${p.t}</h1><div class="by">BY CATHERINE GORODKOVA · ${p.y}</div><a class="cta" href="#contact" data-open>MAKE SOMETHING LIKE THIS</a></div>
+     <div><h4>ABOUT</h4><p>${p.d}</p></div>
+     <div><h4>CREDITS</h4><div class="cr"><b>CLIENT</b><span>${p.cl}</span><b>ROLE</b><span>${p.role}</span><b>FORMAT</b><span>${CATS[p.c]}</span><b>YEAR</b><span>${p.y}</span></div></div>
+   </div>`;
   document.querySelectorAll('#proj [data-open]').forEach(a=>a.addEventListener('click',open));
+  // strip behaviour
+  const strip=document.getElementById('strip'),rail=document.getElementById('rail'),cnt=document.getElementById('cnt');
+  const frs=[...rail.children];let x=0,max=0;
+  const measure=()=>{max=Math.max(0,rail.scrollWidth-strip.clientWidth);x=Math.min(x,max);rail.style.transform=`translateX(${-x}px)`;cnt.textContent=(frs.length?`${idx()+1} / ${frs.length}`:'');};
+  const idx=()=>{let acc=0;for(let i=0;i<frs.length;i++){acc+=frs[i].offsetWidth;if(acc>x+1)return i;}return frs.length-1;};
+  const go=d=>{const i=idx();const target=d>0?Math.min(frs.length-1,i+1):Math.max(0,i-1);x=0;for(let k=0;k<target;k++)x+=frs[k].offsetWidth;x=Math.min(x,max);rail.style.transform=`translateX(${-x}px)`;cnt.textContent=`${target+1} / ${frs.length}`;};
+  document.getElementById('arrL').onclick=()=>go(-1);document.getElementById('arrR').onclick=()=>go(1);
+  strip.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){e.preventDefault();x=Math.max(0,Math.min(max,x+e.deltaX));rail.style.transition='none';rail.style.transform=`translateX(${-x}px)`;cnt.textContent=`${idx()+1} / ${frs.length}`;requestAnimationFrame(()=>rail.style.transition='');}},{passive:false});
+  let sx=null;strip.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});strip.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?1:-1);sx=null;});
+  const onKey=e=>{if(!document.getElementById('p-project').classList.contains('on'))return;if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);};
+  window.__stripKey&&removeEventListener('keydown',window.__stripKey);window.__stripKey=onKey;addEventListener('keydown',onKey);
+  let loaded=0;frs.forEach(f=>{const im=f.querySelector('img');if(!im||im.complete){loaded++;}else im.addEventListener('load',()=>{loaded++;measure();});});
+  measure();addEventListener('resize',measure);
 }
 function wall(id,items){document.getElementById(id).innerHTML=items.map(([h,col,r,href])=>`<a href="${href||'#article-1'}"><div class="img" style="aspect-ratio:${r}">${ph(col,h)}</div><h3>${h}</h3></a>`).join('');}
 function route(){
@@ -403,13 +431,22 @@ const gnb=document.getElementById('gnb');let last=0;
 addEventListener('scroll',()=>{const y=window.scrollY;if(y>last+40)gnb.classList.add('hide');else if(y<last-2)gnb.classList.remove('hide');else return;last=Math.max(y,0);},{passive:true});
 function setTone(){const probe=24+(parseFloat(getComputedStyle(document.documentElement).paddingTop)||0);let t='red';for(const s of document.querySelectorAll('.page.on [data-tone], .page.on[data-tone], footer')){const r=s.getBoundingClientRect();if(r.top<=probe&&r.bottom>probe)t=s.dataset.tone||'white';}document.body.dataset.tone=t;}
 addEventListener('scroll',setTone,{passive:true});
+// live trio: each cell cycles through its project's frames
+document.querySelectorAll('.slide a[href^="#project-"]').forEach((a,k)=>{
+  const p=P.find(x=>'#project-'+x.s===a.getAttribute('href'));if(!p||!p.imgs||p.imgs.length<2)return;
+  const pool=p.imgs.filter(n=>!(p.wide||[]).includes(n));if(pool.length<2)return;
+  const start=p.cover??0;let i=pool.indexOf(p.imgs[start]);if(i<0)i=0;
+  a.innerHTML=`<img class="pic-img" src="media/work/${p.s}/${pool[i]}.jpg" alt="${p.t}"><img class="pic-img off" alt="">`;
+  const [A,B]=a.querySelectorAll('img');let front=A,back=B;
+  setTimeout(()=>setInterval(()=>{i=(i+1)%pool.length;back.src=`media/work/${p.s}/${pool[i]}.jpg`;back.onload=()=>{back.classList.remove('off');front.classList.add('off');[front,back]=[back,front];};},3800+k*600),k*1300);
+});
 const track=document.getElementById('track'),dots=[...document.querySelectorAll('#dots i')];
 track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/track.clientWidth);dots.forEach((d,k)=>d.classList.toggle('on',k===i));},{passive:true});
 function open(e){e.preventDefault();document.body.classList.add('open');}
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',open));
 document.querySelectorAll('[data-close]').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('open')));
 addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('open');});
-document.getElementById('cf').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,b=f.querySelector('.ok');if(!f.action||f.action.includes('https://formspree.io/f/xdeelbba')){b.textContent='FORM NOT CONNECTED YET — USE EMAIL BELOW';return;}b.textContent='SENDING…';b.disabled=true;try{const r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});if(r.ok){b.textContent='SENT — I\'LL WRITE BACK';f.reset();}else{throw 0}}catch(_){b.textContent='DIDN\'T GO THROUGH — EMAIL ME BELOW';b.disabled=false;}});
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async e=>{e.preventDefault();e.stopPropagation();try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent='COPIED';}catch(_){const r=document.createRange();r.selectNodeContents(b.previousElementSibling);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent='SELECT & COPY';}setTimeout(()=>b.textContent='COPY',1800);}));
 addEventListener('hashchange',route);
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.hash===location.hash&&!a.hasAttribute('data-open')){e.preventDefault();route();}});
 route();
