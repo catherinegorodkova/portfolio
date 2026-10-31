@@ -305,7 +305,6 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 
 <footer data-tone="white">
   <div class="big disp">Born to direct.</div>
-  <div class="mail"><input id="nl" type="email" placeholder="EMAIL" aria-label="Email"><button class="btn" type="button">SUBSCRIBE</button></div>
   <div class="row">
     <div><p>Catherine Gorodkova — AI artist, art director and model. Product, catalog, campaign, fashion film and animation for brands, musicians and people who want a picture nobody else has.</p></div>
     <div><h4>WORK</h4><ul><li><a href="#work-product">PRODUCT</a></li><li><a href="#work-catalog">CATALOG</a></li><li><a href="#work-campaign">CAMPAIGN</a></li><li><a href="#work-film">FASHION FILM</a></li><li><a href="#work-animation">ANIMATION</a></li><li><a href="#work-characters">CHARACTERS</a></li></ul></div>
@@ -330,9 +329,9 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 <aside class="drawer" id="contact" aria-label="Contact">
   <button class="x" type="button" data-close aria-label="Close">×</button>
   <h2>What are we making?</h2>
-  <form class="f" id="cf">
-    <input id="c-name" placeholder="Name / brand"><input id="c-mail" type="email" placeholder="Email or Instagram">
-    <textarea id="c-msg" placeholder="Product? Campaign? Film? Something nobody has done yet?"></textarea>
+  <form class="f" id="cf" action="https://formspree.io/f/xdeelbba" method="POST">
+    <input id="c-name" name="name" placeholder="Name / brand" required><input id="c-mail" name="contact" placeholder="Email or Instagram" required>
+    <textarea id="c-msg" name="message" placeholder="Product? Campaign? Film? Something nobody has done yet?" required></textarea>
     <button class="ok" type="submit">SEND</button>
   </form>
   <div class="kw"><small>OR JUST WRITE</small><span>catherineboltacheva@gmail.com</span><a href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener">INSTAGRAM @catherine_gorodkova</a><a href="https://t.me/katebolt" target="_blank" rel="noopener">TELEGRAM @katebolt</a></div>
@@ -406,7 +405,7 @@ function open(e){e.preventDefault();document.body.classList.add('open');}
 document.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',open));
 document.querySelectorAll('[data-close]').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('open')));
 addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('open');});
-document.getElementById('cf').addEventListener('submit',e=>{e.preventDefault();e.target.querySelector('.ok').textContent='SENT — DEMO';});
+document.getElementById('cf').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,b=f.querySelector('.ok');if(!f.action||f.action.includes('https://formspree.io/f/xdeelbba')){b.textContent='FORM NOT CONNECTED YET — USE EMAIL BELOW';return;}b.textContent='SENDING…';b.disabled=true;try{const r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});if(r.ok){b.textContent='SENT — I\'LL WRITE BACK';f.reset();}else{throw 0}}catch(_){b.textContent='DIDN\'T GO THROUGH — EMAIL ME BELOW';b.disabled=false;}});
 addEventListener('hashchange',route);
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.hash===location.hash&&!a.hasAttribute('data-open')){e.preventDefault();route();}});
 route();
