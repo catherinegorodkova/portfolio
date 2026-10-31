@@ -37,6 +37,9 @@ body[data-tone=white] .logo a{color:var(--white)}
 .badge{position:fixed;right:calc(var(--gr) + 4px);bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom,0px));z-index:45;background:var(--black);color:var(--white);font-family:var(--display);font-size:15px;letter-spacing:.08em;padding:10px 16px;outline:2px solid var(--white)}
 .badge:hover{background:var(--red)}
 
+/* real images */
+.pic-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.card .img .pic-img.alt{opacity:0;transition:opacity .2s}.card:hover .img .pic-img.alt{opacity:1}
 /* placeholders */
 .ph{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;background-size:cover}
 .ph::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");opacity:.45;mix-blend-mode:overlay;pointer-events:none}
@@ -226,7 +229,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
   </section>
   <section class="slider" data-tone="red">
     <div class="track" id="track">
-      <div class="slide"><a href="#project-katisha"><div class="ph red fig"><i class="b"></i><span>КАТИША — КУПАЛЬНИКИ</span></div></a><a href="#project-btso"><div class="ph black blob"><i class="b"></i><span>BORNTOSTANDOUT — ПРЕДМЕТКА</span></div></a><a href="#project-domiverse"><div class="ph paper fig"><i class="b"></i><span>DOMIVERSE — ПЕРСОНАЖ</span></div></a></div>
+      <div class="slide"><a href="#project-katisha"><div class="ph red fig"><i class="b"></i><span>КАТИША — КУПАЛЬНИКИ</span></div></a><a href="#project-btso"><img class="pic-img" src="media/work/btso/01-black-mango.jpg" alt="BORNTOSTANDOUT — Black Mango"></a><a href="#project-domiverse"><div class="ph paper fig"><i class="b"></i><span>DOMIVERSE — ПЕРСОНАЖ</span></div></a></div>
       <div class="slide"><a href="#project-pps"><div class="ph grad"><span>PPS</span></div></a><a href="#project-samhain"><div class="ph blue"><span>ТВОЙ МУЛЬТИК</span></div></a><a href="#project-karizma"><div class="ph black"><span>KARIZMA</span></div></a></div>
       <div class="slide"><a href="#project-remagine"><div class="ph paper"><span>REMAGINE</span></div></a><a href="#project-domiverse"><div class="ph red"><span>DOMIVERSE</span></div></a><a href="#project-xose"><div class="ph blue"><span>STUDIO XOSE</span></div></a></div>
     </div>
@@ -354,14 +357,15 @@ const P=[
  {s:'borodenko',t:'Borodenko',c:'characters',y:2025,cl:'Borodenko',role:'Character shoot',a:'grad',b:'paper',d:'Persona shoot: looks, light, world.'},
  {s:'karizma',t:'Call Me Karizma',c:'music',y:2025,cl:'Call Me Karizma',role:'Co-direction, motion',a:'black',b:'red',d:'Video for a track release.'},
  {s:'manson',t:'Exit Wound — 15s',c:'music',y:2025,cl:'Snippet',role:'Direction, motion',a:'red',b:'black',d:'15-second snippet. One shot, no cuts.'},
- {s:'btso',t:'BORNTOSTANDOUT — Halloween',c:'product',y:2026,cl:'BORNTOSTANDOUT (concept)',role:'Concept, product shoot, carousel',a:'black',b:'red',blob:1,d:'Halloween carousel for a Korean niche perfume house. Bottles in places they were never photographed.'},
+ {s:'btso',t:'BORNTOSTANDOUT — Halloween',c:'product',y:2026,cl:'BORNTOSTANDOUT (concept)',role:'Concept, product shoot, carousel',a:'black',b:'red',blob:1,imgs:['01-black-mango','02-lanimal','03-filthy-musk','04-mad-honey','05-filthy-musk-web','06-oud-candy','07-saint-petal','08-dirty-heaven','09-lanimal-ii'],d:'Halloween carousel for a Korean niche perfume house. Bottles in places they were never photographed.'},
  {s:'sancti',t:'Sancti — Perfume',c:'product',y:2025,cl:'Liquides Imaginaires (study)',role:'Product shoot, motion',a:'paper',b:'red',blob:1,d:'Perfume bottle in a scene it was never photographed in.'},
  {s:'cutouts',t:'Designer cutouts',c:'catalog',y:2025,cl:'Private designer',role:'Catalog renders',a:'paper',b:'blue',blob:1,d:'Clean renders of garments for an e-commerce site.'},
  {s:'fall',t:'The Fall',c:'personal',y:2026,cl:'Own film',role:'Everything, and in the frame',a:'red',b:'black',d:'Kubrick, red, black, a staircase.'},
  {s:'tour',t:'Concert tour backdrops',c:'stage',y:2025,cl:'Under NDA',role:'Visual direction',a:'black',b:'black',nda:1,d:'Projection backdrops for a concert tour. Shown on request.'},
 ];
+const img=(p,i,alt)=>`<img class="pic-img${alt?' alt':''}" src="media/work/${p.s}/${p.imgs[i]}.jpg" alt="${p.t}" loading="lazy">`;
 const ph=(col,label,blob,alt)=>`<div class="ph ${col}${blob?' blob':''}${alt?' alt':''}">${blob?'<i class="b"></i>':''}<span>${label}</span></div>`;
-const card=p=>`<a class="card${p.nda?' nda':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${ph(p.a,p.t,p.blob)}${ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()} · ${p.y}</small></div></a>`;
+const card=p=>`<a class="card${p.nda?' nda':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs?img(p,0)+(p.imgs[1]?img(p,1,1):''):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()} · ${p.y}</small></div></a>`;
 
 const pages=[...document.querySelectorAll('.page')];
 const gnbItems=[...document.querySelectorAll('.gnb li[data-nav]')];
@@ -377,7 +381,7 @@ function renderWork(cat){
 function renderProject(slug){
   const p=P.find(x=>x.s===slug)||P[0];
   document.getElementById('proj').innerHTML=`
-   <div class="gal">${[1,2,3,4].map(i=>`<div>${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('')}</div>
+   <div class="gal">${p.imgs?p.imgs.map((_,i)=>`<div>${img(p,i)}</div>`).join(''):[1,2,3,4].map(i=>`<div>${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('')}</div>
    <div class="buy"><a class="back" href="#work-${p.c}">← ${CATS[p.c].toUpperCase()}</a><h1>${p.t}</h1><div class="by">BY CATHERINE GORODKOVA · ${p.y}</div>
      <a class="cta" href="#contact" data-open>MAKE SOMETHING LIKE THIS</a>
      <h4>About</h4><p>${p.d}</p><h4>Process</h4><p>Бриф → карта бренда → персонаж → серия кадров → motion. Здесь будет короткий текст про то, как делался именно этот проект.</p></div>
