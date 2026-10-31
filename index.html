@@ -66,6 +66,9 @@ html{scroll-snap-type:none}body.snap{scroll-snap-type:y mandatory}html:has(body.
 .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.track::-webkit-scrollbar{display:none}
 .slide{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);min-height:66vh}
 .slide a{position:relative;background:var(--black);min-height:40vh;display:block;overflow:hidden}
+.slide.wide{grid-template-columns:1fr}
+.slide .vidcell video{object-fit:cover}.slide.wide .vidcell video{object-fit:cover}
+.slide .lbl{position:absolute;left:16px;bottom:14px;z-index:2;color:var(--white);font-family:var(--display);font-size:16px;letter-spacing:.14em;mix-blend-mode:difference}
 .slide a .pic-img{transition:opacity .9s ease}.slide a .pic-img.off{opacity:0}
 .slider .txt{text-align:center;padding:22px var(--gr) 26px var(--gl)}
 .slider .txt h2{font-size:clamp(30px,4.5vw,56px)}
@@ -116,6 +119,8 @@ html{scroll-snap-type:none}body.snap{scroll-snap-type:y mandatory}html:has(body.
 .strip .fr{flex:0 0 auto;height:100%;position:relative;border-right:1px solid var(--line)}
 .strip .fr{width:calc(100vw/3)}.strip .fr img{height:100%;width:100%;display:block;object-fit:cover}
 .strip .fr.wide{width:100vw}.strip .fr.wide img{object-fit:contain;background:var(--black)}
+.strip .vid .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;background:var(--red);color:var(--white);border:0;font-family:var(--display);font-size:28px;letter-spacing:.16em;padding:18px 34px;outline:3px solid var(--white)}
+.strip .vid .play:hover{background:var(--blue)}.strip .vid.on .play{display:none}
 .strip .nav{position:absolute;top:0;bottom:0;width:50%;z-index:3}
 .strip .nav.l{left:0;cursor:w-resize}.strip .nav.r{right:0;cursor:e-resize}
 .strip .cnt{position:absolute;right:var(--gr);bottom:14px;z-index:4;color:var(--white);font-family:var(--display);font-size:16px;letter-spacing:.14em;mix-blend-mode:difference}
@@ -244,8 +249,8 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
   <section class="slider" data-tone="red">
     <div class="track" id="track">
       <div class="slide"><a href="#project-katisha"><img class="pic-img" src="media/work/katisha/01.jpg" alt="KatishaLikeIt — Palm Springs"></a><a href="#project-btso"><img class="pic-img" src="media/work/btso/01-black-mango.jpg" alt="BORNTOSTANDOUT — Black Mango"></a><a href="#project-domiverse"><img class="pic-img" src="media/work/domiverse/02.jpg" alt="Domiverse × Condé Nast"></a></div>
-      <div class="slide"><a href="#project-pps"><div class="ph grad"><span>PPS</span></div></a><a href="#project-samhain"><div class="ph blue"><span>ТВОЙ МУЛЬТИК</span></div></a><a href="#project-karizma"><div class="ph black"><span>KARIZMA</span></div></a></div>
-      <div class="slide"><a href="#project-remagine"><div class="ph paper"><span>REMAGINE</span></div></a><a href="#project-domiverse"><div class="ph red"><span>DOMIVERSE</span></div></a><a href="#project-xose"><div class="ph blue"><span>STUDIO XOSE</span></div></a></div>
+      <div class="slide wide"><a href="#project-karizma" class="vidcell"><video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/work/karizma/poster.jpg"><source src="media/work/karizma/video.mp4" type="video/mp4"></video><span class="lbl">CALL ME KARIZMA — SNIPPET</span></a></div>
+      <div class="slide"><a href="#project-sancti" class="vidcell"><video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/work/sancti/poster.jpg"><source src="media/work/sancti/video.mp4" type="video/mp4"></video><span class="lbl">LIQUIDES IMAGINAIRES</span></a><a href="#project-pps"><div class="ph grad"><span>PPS</span></div></a><a href="#project-remagine"><div class="ph paper"><span>REMAGINE</span></div></a></div>
     </div>
     <div class="txt"><h2>Selected work</h2><p>Product · catalog · campaign · fashion film · animation · characters</p></div>
     <div class="dots" id="dots"><i class="on"></i><i></i><i></i></div>
@@ -394,7 +399,7 @@ function renderWork(cat){
 }
 function renderProject(slug){
   const p=P.find(x=>x.s===slug)||P[0];
-  const frames=p.imgs?p.imgs.map(n=>n.startsWith('video')?`<div class="fr wide"><video class="pic-img" autoplay muted loop playsinline controls poster="media/work/${p.s}/poster.jpg" style="object-fit:contain;background:var(--black)"><source src="media/work/${p.s}/${n}.mp4" type="video/mp4"></video></div>`:`<div class="fr${(p.wide||[]).includes(n)?' wide':''}"><img src="media/work/${p.s}/${n}.jpg" alt="${p.t}" loading="eager"></div>`).join(''):[1,2,3,4].map(i=>`<div class="fr" style="width:33.34vw">${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('');
+  const frames=p.imgs?p.imgs.map(n=>n.startsWith('video')?`<div class="fr wide vid"><video class="pic-img" playsinline controls preload="metadata" poster="media/work/${p.s}/poster.jpg" style="object-fit:contain;background:var(--black)"><source src="media/work/${p.s}/${n}.mp4" type="video/mp4"></video><button class="play" type="button" aria-label="Play">PLAY</button></div>`:`<div class="fr${(p.wide||[]).includes(n)?' wide':''}"><img src="media/work/${p.s}/${n}.jpg" alt="${p.t}" loading="eager"></div>`).join(''):[1,2,3,4].map(i=>`<div class="fr" style="width:33.34vw">${ph(i%2?p.a:p.b,p.t+' — КАДР '+i,p.blob&&i===1)}</div>`).join('');
   document.getElementById('proj').innerHTML=`
    <div class="strip" id="strip"><div class="rail" id="rail">${frames}</div><button class="arr l" id="arrL" aria-label="Previous">←</button><button class="arr r" id="arrR" aria-label="Next">→</button><div class="cnt" id="cnt"></div></div>
    <div class="pinfo">
@@ -403,6 +408,7 @@ function renderProject(slug){
      <div><h4>CREDITS</h4><div class="cr"><b>CLIENT</b><span>${p.cl}</span><b>ROLE</b><span>${p.role}</span><b>FORMAT</b><span>${CATS[p.c]}</span><b>YEAR</b><span>${p.y}</span></div></div>
    </div>`;
   document.querySelectorAll('#proj [data-open]').forEach(a=>a.addEventListener('click',open));
+  document.querySelectorAll('#proj .vid').forEach(w=>{const v=w.querySelector('video'),b=w.querySelector('.play');b.onclick=()=>{v.muted=false;v.volume=1;v.play();};v.addEventListener('play',()=>w.classList.add('on'));v.addEventListener('pause',()=>w.classList.remove('on'));});
   // strip behaviour
   const strip=document.getElementById('strip'),rail=document.getElementById('rail'),cnt=document.getElementById('cnt');
   const frs=[...rail.children];let x=0,max=0;
