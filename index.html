@@ -229,7 +229,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
   </section>
   <section class="slider" data-tone="red">
     <div class="track" id="track">
-      <div class="slide"><a href="#project-katisha"><img class="pic-img" src="media/work/katisha/01.jpg" alt="KatishaLikeIt — Palm Springs"></a><a href="#project-btso"><img class="pic-img" src="media/work/btso/01-black-mango.jpg" alt="BORNTOSTANDOUT — Black Mango"></a><a href="#project-domiverse"><div class="ph paper fig"><i class="b"></i><span>DOMIVERSE — ПЕРСОНАЖ</span></div></a></div>
+      <div class="slide"><a href="#project-katisha"><img class="pic-img" src="media/work/katisha/01.jpg" alt="KatishaLikeIt — Palm Springs"></a><a href="#project-btso"><img class="pic-img" src="media/work/btso/01-black-mango.jpg" alt="BORNTOSTANDOUT — Black Mango"></a><a href="#project-domiverse"><img class="pic-img" src="media/work/domiverse/02.jpg" alt="Domiverse × Condé Nast"></a></div>
       <div class="slide"><a href="#project-pps"><div class="ph grad"><span>PPS</span></div></a><a href="#project-samhain"><div class="ph blue"><span>ТВОЙ МУЛЬТИК</span></div></a><a href="#project-karizma"><div class="ph black"><span>KARIZMA</span></div></a></div>
       <div class="slide"><a href="#project-remagine"><div class="ph paper"><span>REMAGINE</span></div></a><a href="#project-domiverse"><div class="ph red"><span>DOMIVERSE</span></div></a><a href="#project-xose"><div class="ph blue"><span>STUDIO XOSE</span></div></a></div>
     </div>
@@ -353,7 +353,7 @@ const P=[
  {s:'samhain',t:'Samhain',c:'animation',y:2025,cl:'Own project',role:'Story, drawing, animation',a:'blue',b:'paper',d:'A hand-drawn short about where Halloween comes from.'},
  {s:'dna',t:'Brand DNA — McQueen',c:'animation',y:2025,cl:'Own series',role:'Story, drawing, animation',a:'paper',b:'black',d:'Drawn micro-films about the symbols of fashion houses.'},
  {s:'mgk',t:'Machine Gun Kelly',c:'characters',y:2025,cl:'Concept',role:'Character shoot',a:'red',b:'black',d:'AI shoot for a persona: one character, one world, one series.'},
- {s:'domiverse',t:'Domiverse × Condé Nast',c:'characters',y:2025,cl:'Domiverse',role:'Character shoot',a:'black',b:'blue',d:'Character shoot for a Condé Nast project.'},
+ {s:'domiverse',t:'Domiverse × Condé Nast',c:'characters',y:2025,cl:'Domiverse',role:'Concept, art direction, images',a:'black',b:'blue',imgs:['01','02','03','04','05','06','07','08'],cover:1,hover:6,d:'Character shoot for a Condé Nast project. One face, three chapters: skin, black couture, armour and roses.'},
  {s:'borodenko',t:'Borodenko',c:'characters',y:2025,cl:'Borodenko',role:'Character shoot',a:'grad',b:'paper',d:'Persona shoot: looks, light, world.'},
  {s:'karizma',t:'Call Me Karizma',c:'music',y:2025,cl:'Call Me Karizma',role:'Co-direction, motion',a:'black',b:'red',d:'Video for a track release.'},
  {s:'manson',t:'Exit Wound — 15s',c:'music',y:2025,cl:'Snippet',role:'Direction, motion',a:'red',b:'black',d:'15-second snippet. One shot, no cuts.'},
@@ -365,7 +365,7 @@ const P=[
 ];
 const img=(p,i,alt)=>`<img class="pic-img${alt?' alt':''}" src="media/work/${p.s}/${p.imgs[i]}.jpg" alt="${p.t}" loading="lazy">`;
 const ph=(col,label,blob,alt)=>`<div class="ph ${col}${blob?' blob':''}${alt?' alt':''}">${blob?'<i class="b"></i>':''}<span>${label}</span></div>`;
-const card=p=>`<a class="card${p.nda?' nda':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs?img(p,0)+(p.imgs[1]?img(p,1,1):''):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()} · ${p.y}</small></div></a>`;
+const card=p=>`<a class="card${p.nda?' nda':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs?img(p,p.cover??0)+img(p,p.hover??1,1):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()} · ${p.y}</small></div></a>`;
 
 const pages=[...document.querySelectorAll('.page')];
 const gnbItems=[...document.querySelectorAll('.gnb li[data-nav]')];
