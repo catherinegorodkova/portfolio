@@ -339,7 +339,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 <nav class="gnb" id="gnb" aria-label="Main">
   <ul>
     <li data-nav="work"><a href="#work-all">WORK</a>
-      <div class="dd"><a href="#work-all">ALL</a><a href="#work-product">PRODUCT</a><a href="#work-catalog">CATALOG</a><a href="#work-campaign">CAMPAIGN</a><a href="#work-film">FASHION FILM</a><a href="#work-animation">ANIMATION</a><a href="#work-characters">CHARACTERS</a><a href="#work-music">MUSIC</a><a href="#work-personal">PERSONAL</a><a href="#work-stage">STAGE VISUALS</a></div></li>
+      <div class="dd"><a href="#work-all">ALL</a><a href="#work-product">PRODUCT</a><a href="#work-catalog">CATALOG</a><a href="#work-campaign">CAMPAIGN</a><a href="#work-film">FASHION FILM</a><a href="#work-animation">ANIMATION</a><a href="#work-characters">CHARACTERS</a><a href="#work-music">MUSIC</a><a href="#work-art">ART</a><a href="#work-stage">STAGE VISUALS</a></div></li>
     <li data-nav="about"><a href="#manifesto">ABOUT</a>
       <div class="dd"><a href="#manifesto">MANIFESTO</a><a href="#story">STORY</a><a href="#press">PRESS</a></div></li>
     <li class="right"><a href="https://instagram.com/catherine_gorodkova" target="_blank" rel="noopener">INSTAGRAM</a></li>
@@ -361,14 +361,14 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 
 <script>
 (()=>{
-const CATS={all:'All',product:'Product',catalog:'Catalog',campaign:'Campaign',film:'Fashion film',animation:'Animation',characters:'Characters',music:'Music',personal:'Personal',stage:'Stage visuals'};
-const DESC={all:'Everything, newest first.',product:'Bottles, jars, candles and objects — shot in places that don\'t exist.',catalog:'Clean cutouts and on-model catalog shots for e-commerce.',campaign:'Full campaigns: concept, character, series of frames.',film:'Fashion video for brands. The garment moves, the camera moves.',animation:'Hand-drawn style animation. Stories, not loops.',characters:'AI shoots for people and personas — musicians, founders, characters.',music:'Videos and snippets for tracks.',personal:'My own films. Me in the frame.',stage:'Projection backdrops for concert tours. Under NDA — shown on request.'};
+const CATS={all:'All',product:'Product',catalog:'Catalog',campaign:'Campaign',film:'Fashion film',animation:'Animation',characters:'Characters',music:'Music',art:'Art',stage:'Stage visuals'};
+const DESC={all:'Everything, newest first.',product:'Bottles, jars, candles and objects — shot in places that don\'t exist.',catalog:'Clean cutouts and on-model catalog shots for e-commerce.',campaign:'Full campaigns: concept, character, series of frames.',film:'Fashion video for brands. The garment moves, the camera moves.',animation:'Hand-drawn style animation. Stories, not loops.',characters:'AI shoots for people and personas — musicians, founders, characters.',music:'Videos and snippets for tracks.',art:'My own work. No brief, no brand — just pictures I wanted to exist.',stage:'Projection backdrops for concert tours. Under NDA — shown on request.'};
 const P=[
  {s:'xose',t:'Studio Xose — Oat',c:'campaign',y:2026,cl:'Studio Xose',role:'Concept, art direction, images',a:'blue',b:'paper',d:'3D-printed sneaker, 12 frames, one object. A campaign shot in a place that was never built.'},
  {s:'katisha',t:'KatishaLikeIt — Palm Springs',c:'campaign',y:2025,cl:'KatishaLikeIt (concept)',role:'Concept, casting, art direction, images',a:'red',b:'blue',imgs:['01','02','03','04','05','06','07','08','09','10','11','12','13','14'],wide:['03','07','12','14'],d:'Swimwear campaign in a Palm Springs that was never built. Fourteen frames, five girls, one endless afternoon.'},
  {s:'remagine',t:'Remagine — RE90',c:'campaign',y:2025,cl:'Remagine Studio',role:'Concept, art direction, images',a:'paper',b:'red',imgs:['01','02','03','04','05','06','07','08','09','10','11','12'],cover:2,hover:6,d:'Footwear campaign. A sprinter in a suit, red socks, two finish lines: the track and the red carpet.'},
- {s:'yvmin',t:'YVMIN — Jewellery',c:'campaign',y:2025,cl:'YVMIN (concept)',role:'Concept, art direction, images',a:'red',b:'blue',imgs:['01','02','03','04','05'],cover:0,hover:3,d:'Jewellery campaign. Pearls, braids and pink shadows on five faces.'},
- {s:'abra',t:'ABRA — Office Hours',c:'campaign',y:2025,cl:'ABRA (concept)',role:'Concept, art direction, images',a:'blue',b:'paper',imgs:['01','02','03','04'],wide:['02','04'],cover:0,hover:2,d:'Footwear campaign. A giantess in a newspaper dress, a 1990s open-plan office, and a pom-pom kitten heel that does not care about the monitors.'},
+ {s:'yvmin',t:'YVMIN — Jewellery',c:'campaign',y:2025,cl:'YVMIN (concept)',role:'Concept, art direction, images',a:'red',b:'blue',imgs:['01','02','03','04','05'],also:['product'],cover:0,hover:3,d:'Jewellery campaign. Pearls, braids and pink shadows on five faces.'},
+ {s:'abra',t:'ABRA — Office Hours',c:'campaign',y:2025,cl:'ABRA (concept)',role:'Concept, art direction, images',a:'blue',b:'paper',imgs:['01','02','03','04'],wide:['02','04'],also:['product'],cover:0,hover:2,d:'Footwear campaign. A giantess in a newspaper dress, a 1990s open-plan office, and a pom-pom kitten heel that does not care about the monitors.'},
  {s:'misbhv',t:'MISBHV — AW26',c:'film',y:2025,cl:'MISBHV (concept)',role:'Direction, motion',a:'black',b:'grad',imgs:['video'],d:'Fashion film. Leather, rain, heels on wet asphalt. Shot nowhere, at night.'},
  {s:'pps',t:'Post Post Scriptum — Baggage',c:'film',y:2025,cl:'P.P.S.',role:'Direction, motion',a:'grad',b:'black',d:'Four looks on an endless airport carousel.'},
  {s:'samhain',t:'Samhain',c:'animation',y:2025,cl:'Own project',role:'Story, drawing, animation',a:'blue',b:'paper',d:'A hand-drawn short about where Halloween comes from.'},
@@ -379,9 +379,9 @@ const P=[
  {s:'karizma',t:'Call Me Karizma — Snippet',c:'music',y:2025,cl:'Call Me Karizma',role:'Co-direction, motion',a:'black',b:'red',imgs:['video'],d:'Snippet for a track release.'},
  {s:'manson',t:'Exit Wound — 15s',c:'music',y:2025,cl:'Snippet',role:'Direction, motion',a:'red',b:'black',d:'15-second snippet. One shot, no cuts.'},
  {s:'btso',t:'BORNTOSTANDOUT — Halloween',c:'product',y:2026,cl:'BORNTOSTANDOUT (concept)',role:'Concept, product shoot, carousel',a:'black',b:'red',blob:1,imgs:['01-black-mango','02-lanimal','03-filthy-musk','04-mad-honey','05-filthy-musk-web','06-oud-candy','07-saint-petal','08-dirty-heaven','09-lanimal-ii'],d:'Halloween carousel for a Korean niche perfume house. Bottles in places they were never photographed.'},
- {s:'sancti',t:'Liquides Imaginaires — Sancti',c:'product',y:2025,cl:'Liquides Imaginaires (concept)',role:'Direction, motion',a:'paper',b:'red',imgs:['video'],d:'Film for a perfume. A bottle, a temple, a red veil.'},
+ {s:'sancti',t:'Liquides Imaginaires — Sancti',c:'product',y:2025,cl:'Liquides Imaginaires (concept)',role:'Direction, motion',a:'paper',b:'red',imgs:['video'],also:['film'],d:'Film for a perfume. A bottle, a temple, a red veil.'},
  {s:'cutouts',t:'Designer cutouts',c:'catalog',y:2025,cl:'Private designer',role:'Catalog renders',a:'paper',b:'blue',blob:1,d:'Clean renders of garments for an e-commerce site.'},
- {s:'fall',t:'The Fall',c:'personal',y:2026,cl:'Own film',role:'Everything, and in the frame',a:'red',b:'black',d:'Kubrick, red, black, a staircase.'},
+ {s:'fall',t:'The Fall',c:'art',y:2026,cl:'Own film',role:'Everything, and in the frame',a:'red',b:'black',d:'Kubrick, red, black, a staircase.'},
  {s:'tour',t:'Concert tour backdrops',c:'stage',y:2025,cl:'Under NDA',role:'Visual direction',a:'black',b:'black',nda:1,d:'Projection backdrops for a concert tour. Shown on request.'},
 ];
 const img=(p,i,alt)=>{const n=p.imgs[Math.min(i,p.imgs.length-1)];const src=n&&n.startsWith('video')?`media/work/${p.s}/poster.jpg`:`media/work/${p.s}/${n}.jpg`;return `<img class="pic-img${alt?' alt':''}" src="${src}" alt="${p.t}" loading="lazy">`;};
@@ -396,7 +396,7 @@ function renderWork(cat){
   document.getElementById('work-title').textContent=cat==='all'?'Work':CATS[cat];
   document.getElementById('work-desc').textContent=DESC[cat];
   document.getElementById('work-tabs').innerHTML=Object.entries(CATS).map(([k,v])=>`<a href="#work-${k}" class="${k===cat?'on':''}">${v.toUpperCase()}</a>`).join('');
-  const list=P.filter(p=>cat==='all'||p.c===cat);
+  const cats=p=>[p.c,...(p.also||[])];const list=P.filter(p=>cat==='all'||cats(p).includes(cat));
   document.getElementById('work-grid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">Coming soon.</div>';
 }
 function renderProject(slug){
