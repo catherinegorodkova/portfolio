@@ -405,7 +405,7 @@ function renderWork(cat){
   document.getElementById('work-title').textContent=cat==='all'?'Work':CATS[cat];
   document.getElementById('work-desc').textContent=DESC[cat];
   document.getElementById('work-tabs').innerHTML=Object.entries(CATS).map(([k,v])=>`<a href="#work-${k}" class="${k===cat?'on':''}">${v.toUpperCase()}</a>`).join('');
-  const cats=p=>[p.c,...(p.also||[])];const list=P.filter(p=>cat==='all'||cats(p).includes(cat));
+  const cats=p=>[p.c,...(p.also||[])];const ALL=['katisha','misbhv','btso','mgk','dna-chanel','remagine','cassyette','sancti','yvmin','subculture-punk','domiverse','solove','borodenko','symbols-mcqueen','abra','karizma','stingy-jack','sorelle-era','manson','symbols-dior','pps','subculture-emo','cutouts','tour','xose'];const list=cat==='all'?ALL.map(k=>P.find(p=>p.s===k)).filter(Boolean).concat(P.filter(p=>!ALL.includes(p.s))):P.filter(p=>cats(p).includes(cat));
   document.getElementById('work-grid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">Coming soon.</div>';
   const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;e.isIntersecting?v.play().catch(()=>{}):v.pause();}),{rootMargin:'200px'});document.querySelectorAll('#work-grid video').forEach(v=>io.observe(v));
 }
