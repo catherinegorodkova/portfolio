@@ -241,6 +241,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 #lb .lb-x{top:16px;right:16px}#lb .lb-l{left:0;top:50%;transform:translateY(-50%)}#lb .lb-r{right:0;top:50%;transform:translateY(-50%)}
 #lb .lb-cnt{position:absolute;right:20px;bottom:18px;color:var(--white);font-family:var(--display);font-size:18px;letter-spacing:.1em}
 .card.tile .img{aspect-ratio:4/5}.card.tile video{width:100%;height:100%;object-fit:cover;display:block}.card.tile:hover .img::after{box-shadow:inset 0 0 0 6px var(--red)}
+.pic.fade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0;transition:opacity 1.2s ease}.pic.fade img.on{opacity:1}
 </style>
 </head>
 <body>
@@ -322,7 +323,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 </section>
 <section class="page" id="p-story" data-tone="red">
   <div class="phead"><div class="row"><h1>About</h1><nav class="tabs"><a href="#manifesto">MANIFESTO</a><a href="#story" class="on">STORY</a><a href="#press">PRESS</a></nav></div></div>
-  <div class="split flip"><div class="pic"><img src="media/about/story.jpg" alt="Catherine Gorodkova" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%"></div>
+  <div class="split flip"><div class="pic fade"><img src="media/about/story.jpg" alt="Catherine Gorodkova" class="on"><img src="media/about/story-2.jpg" alt="Catherine Gorodkova"></div>
     <div class="copy"><h2>Why I do this</h2>
       <h4>2013</h4><p>My first modelling contract took me to Shanghai. Then Milan, Paris, Istanbul — fashion weeks, campaigns, editorials, street style. For years, Paris was somewhere I kept going back to.</p>
       <h4>The other side of the set</h4><p>Along the way I stopped being only the person in the picture. I produced shoots, staged runway shows, worked as brand manager for a jewellery house, took a clothing brand to showrooms in Tallinn and Milan, ran art direction and marketing. Every role taught me a different piece of how an image gets made — and how it gets sold.</p>
@@ -423,6 +424,7 @@ lbEl.querySelector('.lb-x').onclick=closeLB;lbEl.querySelector('.lb-l').onclick=
 lbEl.addEventListener('click',e=>{if(e.target===lbEl)closeLB();});
 addEventListener('keydown',e=>{if(!LB)return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')stepLB(-1);if(e.key==='ArrowRight')stepLB(1);});
 {let x0=0;lbEl.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});lbEl.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)stepLB(dx<0?1:-1);});}
+setInterval(()=>{document.querySelectorAll('.pic.fade').forEach(w=>{const im=[...w.querySelectorAll('img')];const i=im.findIndex(x=>x.classList.contains('on'));im[i].classList.remove('on');im[(i+1)%im.length].classList.add('on');});},4500);
 function renderWork(cat){
   if(!CATS[cat])cat='all';
   document.getElementById('work-title').textContent=cat==='all'?'Work':CATS[cat];
