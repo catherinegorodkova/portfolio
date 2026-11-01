@@ -391,7 +391,7 @@ const P=[
 const img=(p,i,alt)=>{const n=p.imgs[Math.min(i,p.imgs.length-1)];const src=n&&n.startsWith('video')?`media/work/${p.s}/poster.jpg`:`media/work/${p.s}/${n}.jpg`;return `<img class="pic-img${alt?' alt':''}" src="${src}" alt="${p.t}" loading="lazy">`;};
 const ph=(col,label,blob,alt)=>`<div class="ph ${col}${blob?' blob':''}${alt?' alt':''}">${blob?'<i class="b"></i>':''}<span>${label}</span></div>`;
 const vid=p=>`<video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/work/${p.s}/poster.jpg"><source src="media/work/${p.s}/video.mp4" type="video/mp4"></video>`;
-const card=p=>`<a class="card${p.nda?' nda':''}${p.soon?' soon':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs&&p.imgs[0]==='video'?vid(p):p.imgs?img(p,p.cover??0)+img(p,p.hover??1,1):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()} · ${p.y}</small></div></a>`;
+const card=p=>`<a class="card${p.nda?' nda':''}${p.soon?' soon':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs&&p.imgs[0]==='video'?vid(p):p.imgs?img(p,p.cover??0)+img(p,p.hover??1,1):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()}</small></div></a>`;
 
 const pages=[...document.querySelectorAll('.page')];
 const gnbItems=[...document.querySelectorAll('.gnb li[data-nav]')];
@@ -411,9 +411,9 @@ function renderProject(slug){
   document.getElementById('proj').innerHTML=`
    <div class="strip" id="strip"><div class="rail" id="rail">${frames}</div><button class="arr l" id="arrL" aria-label="Previous">←</button><button class="arr r" id="arrR" aria-label="Next">→</button><div class="cnt" id="cnt"></div></div>
    <div class="pinfo">
-     <div><a class="back" href="#work-${p.c}">← ${CATS[p.c].toUpperCase()}</a><h1>${p.t}</h1><div class="by">BY CATHERINE GORODKOVA · ${p.y}</div><a class="cta" href="#contact" data-open>MAKE SOMETHING LIKE THIS</a></div>
+     <div><a class="back" href="#work-${p.c}">← ${CATS[p.c].toUpperCase()}</a><h1>${p.t}</h1><div class="by">BY CATHERINE GORODKOVA</div><a class="cta" href="#contact" data-open>MAKE SOMETHING LIKE THIS</a></div>
      <div><h4>ABOUT</h4><p>${p.d}</p></div>
-     <div><h4>CREDITS</h4><div class="cr"><b>CLIENT</b><span>${p.cl}</span><b>ROLE</b><span>${p.role}</span><b>FORMAT</b><span>${CATS[p.c]}</span><b>YEAR</b><span>${p.y}</span></div></div>
+     <div><h4>CREDITS</h4><div class="cr"><b>CLIENT</b><span>${p.cl}</span><b>ROLE</b><span>${p.role}</span><b>FORMAT</b><span>${CATS[p.c]}</span></div></div>
    </div>`;
   document.querySelectorAll('#proj [data-open]').forEach(a=>a.addEventListener('click',open));
   document.querySelectorAll('#proj .vid').forEach(w=>{const v=w.querySelector('video'),b=w.querySelector('.play');b.onclick=()=>{v.muted=false;v.volume=1;v.play();};v.addEventListener('play',()=>w.classList.add('on'));v.addEventListener('pause',()=>w.classList.remove('on'));});
