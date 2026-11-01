@@ -161,6 +161,7 @@ html{scroll-snap-type:none}body.snap{scroll-snap-type:y mandatory}html:has(body.
 .masonry a{display:block;break-inside:avoid;margin-bottom:22px}
 .masonry .img{position:relative;width:100%}
 .masonry h3{font-size:18px;color:var(--red);margin-top:8px;letter-spacing:.04em}
+.masonry .pr img{display:block;width:100%;height:auto;border:1px solid var(--line)}
 .article{max-width:860px;margin:0 auto;padding:80px var(--gr) 80px var(--gl)}
 .article h1{font-size:clamp(34px,4.5vw,56px);color:var(--red);margin-bottom:20px}
 .article .img{position:relative;aspect-ratio:16/9;margin:24px 0}
@@ -294,7 +295,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 
 <!-- ABOUT pages -->
 <section class="page" id="p-press" data-tone="red">
-  <div class="phead"><div class="row"><h1>About</h1><nav class="tabs"><a href="#manifesto">MANIFESTO</a><a href="#story">STORY</a><a href="#press" class="on">PRESS</a></nav></div><p>Twelve years in fashion — runway, editorial, campaigns, street style. Publications and features.</p></div>
+  <div class="phead"><div class="row"><h1>About</h1><nav class="tabs"><a href="#manifesto">MANIFESTO</a><a href="#story">STORY</a><a href="#press" class="on">PRESS</a></nav></div><p>Twelve years in fashion — runway, editorial, campaigns, street style. Vogue, Models.com, i-D, Dazed, WWD and the street-style photographers who kept finding me.</p></div>
   <div class="masonry" id="press-wall"></div>
 </section>
 <section class="page" id="p-manifesto" data-tone="red">
@@ -442,7 +443,7 @@ function route(){
   if(['manifesto','story','press'].includes(h)){show(h,'about');return;}
   show('home',null);
 }
-wall('press-wall',[['VOGUE','red','3/4','#press'],['MODELS.COM','paper','1/1','#press'],['ADAM KATZ SINDING — STREET STYLE','black','2/3','#press'],['FASHION WEEK','blue','4/5','#press'],['MAGAZINE','paper','3/4','#press'],['EDITORIAL','red','1/1','#press']]);
+const PRESS=[["vogue-1", "Vogue"], ["vogue-2", "Vogue"], ["vogue-3", "Vogue"], ["vogue-de", "Vogue Deutsch"], ["vogue-world", "Vogue World"], ["models-1", "Models.com"], ["models-2", "Models.com"], ["i-d", "i-D"], ["dazed", "Dazed"], ["wwd", "WWD"], ["pause-1", "PAUSE"], ["pause-2", "PAUSE"], ["aks-1", "Adam Katz Sinding"], ["aks-2", "Adam Katz Sinding"], ["le21-1", "Le 21\u00e8me \u2014 Adam Katz Sinding"], ["le21-2", "Le 21\u00e8me \u2014 Adam Katz Sinding"], ["le21-3", "Le 21\u00e8me \u2014 Adam Katz Sinding"], ["pairs-1", "Pairs Project"], ["pairs-2", "Pairs Project"]];document.getElementById('press-wall').innerHTML=PRESS.map(([f,l])=>`<a class="pr"><div class="img"><img src="media/press/${f}.jpg" alt="${l}" loading="lazy"></div><h3>${l.toUpperCase()}</h3></a>`).join('');
 
 const gnb=document.getElementById('gnb');let last=0;
 addEventListener('scroll',()=>{const y=window.scrollY;if(y>last+40)gnb.classList.add('hide');else if(y<last-2)gnb.classList.remove('hide');else return;last=Math.max(y,0);},{passive:true});
