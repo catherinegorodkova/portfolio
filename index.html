@@ -230,6 +230,17 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
   .gnb li.right{margin-left:0}.gnb ul{gap:0 6px}.gnb li{font-size:14px}.gnb li > a{padding:0 7px}.stack > section{position:relative}
 }
 @media (max-width:480px){.grid{grid-template-columns:1fr}.masonry{columns:1}}
+
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:200;display:none;align-items:center;justify-content:center}
+#lb.on{display:flex}
+#lb .lb-body{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;padding:0 60px;box-sizing:border-box}
+#lb .lb-body img,#lb .lb-body video{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+@media (max-width:700px){#lb .lb-body{padding:0}}
+#lb button{position:absolute;background:var(--red);color:var(--white);border:0;font-family:var(--display);font-size:26px;width:56px;height:56px;cursor:pointer;z-index:2}
+#lb button:hover{background:var(--blue)}
+#lb .lb-x{top:16px;right:16px}#lb .lb-l{left:0;top:50%;transform:translateY(-50%)}#lb .lb-r{right:0;top:50%;transform:translateY(-50%)}
+#lb .lb-cnt{position:absolute;right:20px;bottom:18px;color:var(--white);font-family:var(--display);font-size:18px;letter-spacing:.1em}
+.card.tile .img{aspect-ratio:4/5}.card.tile video{width:100%;height:100%;object-fit:cover;display:block}.card.tile:hover .img::after{box-shadow:inset 0 0 0 6px var(--red)}
 </style>
 </head>
 <body>
@@ -358,13 +369,14 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
   </div>
 </aside>
 
+<div id="lb"><button class="lb-x" aria-label="Close">×</button><button class="lb-l" aria-label="Previous">←</button><div class="lb-body"></div><button class="lb-r" aria-label="Next">→</button><div class="lb-cnt"></div></div>
 <script>
 (()=>{
 const CATS={all:'All',product:'Product',catalog:'Catalog',campaign:'Campaign',film:'Fashion film',animation:'Animation',characters:'Characters',music:'Music',art:'Art',stage:'Stage visuals'};
 const DESC={all:'Everything, newest first.',product:'Bottles, jars, candles and objects — shot in places that don\'t exist.',catalog:'Clean cutouts and on-model catalog shots for e-commerce.',campaign:'Full campaigns: concept, character, series of frames.',film:'Fashion video for brands. The garment moves, the camera moves.',animation:'Hand-drawn style animation. Stories, not loops.',characters:'AI shoots for people and personas — musicians, founders, characters.',music:'Videos and snippets for tracks.',art:'My own work. No brief, no brand — just pictures I wanted to exist.',stage:'Projection backdrops for concert tours. Under NDA — shown on request.'};
 const P=[
 {s:'chois',t:'CHOIS',c:'campaign',y:2025,cl:'CHOIS Studios',role:'Concept, moodboard, casting, styling, hair & make-up, art direction, production, images',a:'paper',b:'red',imgs:['01','02','03','04','05'],cover:0,hover:1,d:'Campaign concept for CHOIS Studios. The clothes are soft and a little old-fashioned — ruffles, Peter Pan collars, wide trousers — so I put them inside an old painting: pink skies, baroque clouds, birds cut from engravings, lemons in every hand. Each girl stands dead centre like a saint on an altarpiece, in flat shoes and socks.'},
-{s:'art',t:'Art',c:'art',y:2025,cl:'Personal',role:'Concept, casting, styling, hair & make-up, art direction, production, images, motion',a:'black',b:'blue',imgs:['01','video1','05','03','08','video2','07','04','10','video3','02','06','09','video4'],wide:['video2'],cover:0,hover:2,d:'Personal work. No brief, no brand — faces, skin, light and whatever I wanted to see that day.'},
+{s:'art',t:'Art',c:'art',gallery:1,y:2025,cl:'Personal',role:'Concept, casting, styling, hair & make-up, art direction, production, images, motion',a:'black',b:'blue',imgs:['01','video1','05','03','08','video2','07','04','10','video3','02','06','09','video4'],wide:['video2'],cover:0,hover:2,d:'Personal work. No brief, no brand — faces, skin, light and whatever I wanted to see that day.'},
  {s:'xose',t:'Studio Xose',c:'campaign',y:2026,cl:'Studio Xose',role:'Concept, moodboard, casting, styling, hair & make-up, art direction, production, images',a:'blue',b:'paper',soon:1,d:'3D-printed sneaker campaign. Coming soon.'},
  {s:'katisha',t:'KatishaLikeIt',c:'campaign',y:2025,cl:'KatishaLikeIt',role:'Concept, moodboard, casting, styling, hair & make-up, art direction, production, images',a:'red',b:'blue',imgs:['01','02','03','04','05','06','07','08','09','10','11','12','13','14'],wide:['03','07','12','14'],d:'A concept for a swimwear brand that started with a picture in my head: hot, bright, somewhere between a Palm Springs pool and a place that doesn\'t exist. One location, and the people keep changing — different girls, different types, tans from expensive bronze to carrot orange, jewellery, a dog, a garden hose, someone sitting by the pool. Loud on purpose. I wanted colour that burns your eyes a little.\n\nEvery girl is styled frame by frame — which swimsuit, which hair, which jewellery, in which shot. Fourteen frames.'},
  {s:'remagine',t:'Remagine',c:'campaign',y:2025,cl:'Remagine Studio',role:'Concept, moodboard, casting, styling, hair & make-up, art direction, production, images',a:'paper',b:'red',imgs:['01','02','03','04','05','06','07','08','09','10','11','12'],cover:2,hover:6,d:'The starting point was a product photo on the brand\'s website — a shoe that reads as a red-carpet heel and a running boot at the same time. That doubleness became the whole campaign. A man in a suit sprinting down the home straight, and in the next frame stepping onto the red carpet, same stride, same shoes. One pair that lives in two worlds, and lets you live in both.'},
@@ -396,18 +408,30 @@ const kick=()=>{document.querySelectorAll('video[autoplay]').forEach(v=>{if(v.pa
 const img=(p,i,alt)=>{const n=p.imgs[Math.min(i,p.imgs.length-1)];const src=n==='video'?`media/work/${p.s}/poster.jpg`:`media/work/${p.s}/${n}.jpg`;return `<img class="pic-img${alt?' alt':''}" src="${src}" alt="${p.t}" loading="lazy">`;};
 const ph=(col,label,blob,alt)=>`<div class="ph ${col}${blob?' blob':''}${alt?' alt':''}">${blob?'<i class="b"></i>':''}<span>${label}</span></div>`;
 const vid=p=>`<video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/work/${p.s}/poster.jpg"><source src="media/work/${p.s}/video.mp4" type="video/mp4"></video>`;
-const card=p=>`<a class="card${p.nda?' nda':''}${p.soon?' soon':''}" href="${p.nda?'#contact':'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs&&p.imgs[0]==='video'?vid(p):p.imgs?img(p,p.cover??0)+img(p,p.hover??1,1):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()}</small></div></a>`;
+const card=p=>`<a class="card${p.nda?' nda':''}${p.soon?' soon':''}" href="${p.nda?'#contact':p.gallery?'#work-'+p.c:'#project-'+p.s}" ${p.nda?'data-open':''}><div class="img">${p.imgs&&p.imgs[0]==='video'?vid(p):p.imgs?img(p,p.cover??0)+img(p,p.hover??1,1):ph(p.a,p.t,p.blob)+ph(p.b,'ВТОРОЙ КАДР',0,1)}</div><div class="meta"><span>${p.t}</span><small>${CATS[p.c].toUpperCase()}</small></div></a>`;
 
 const pages=[...document.querySelectorAll('.page')];
 const gnbItems=[...document.querySelectorAll('.gnb li[data-nav]')];
 function show(id,nav){document.body.classList.toggle('snap',id==='home');pages.forEach(p=>p.classList.toggle('on',p.id==='p-'+id));gnbItems.forEach(l=>l.classList.toggle('on',l.dataset.nav===nav));window.scrollTo(0,0);setTone();}
+
+let LB=null;const lbEl=document.getElementById('lb');
+function openLB(p,i){LB={p,i};drawLB();lbEl.classList.add('on');document.body.style.overflow='hidden';}
+function drawLB(){const {p,i}=LB;const n=p.imgs[i];lbEl.querySelector('.lb-body').innerHTML=n.startsWith('video')?`<video src="media/work/${p.s}/${n}.mp4" poster="media/work/${p.s}/${n}.jpg" controls autoplay playsinline></video>`:`<img src="media/work/${p.s}/${n}.jpg" alt="${p.t}">`;lbEl.querySelector('.lb-cnt').textContent=(i+1)+' / '+p.imgs.length;}
+function closeLB(){lbEl.classList.remove('on');lbEl.querySelector('.lb-body').innerHTML='';document.body.style.overflow='';LB=null;}
+function stepLB(d){if(!LB)return;LB.i=(LB.i+d+LB.p.imgs.length)%LB.p.imgs.length;drawLB();}
+lbEl.querySelector('.lb-x').onclick=closeLB;lbEl.querySelector('.lb-l').onclick=()=>stepLB(-1);lbEl.querySelector('.lb-r').onclick=()=>stepLB(1);
+lbEl.addEventListener('click',e=>{if(e.target===lbEl)closeLB();});
+addEventListener('keydown',e=>{if(!LB)return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')stepLB(-1);if(e.key==='ArrowRight')stepLB(1);});
+{let x0=0;lbEl.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});lbEl.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)stepLB(dx<0?1:-1);});}
 function renderWork(cat){
   if(!CATS[cat])cat='all';
   document.getElementById('work-title').textContent=cat==='all'?'Work':CATS[cat];
   document.getElementById('work-desc').textContent=DESC[cat];
   document.getElementById('work-tabs').innerHTML=Object.entries(CATS).map(([k,v])=>`<a href="#work-${k}" class="${k===cat?'on':''}">${v.toUpperCase()}</a>`).join('');
   const cats=p=>[p.c,...(p.also||[])];const ALL=['katisha','misbhv','btso','chois','mgk','dna-chanel','art','remagine','cassyette','sancti','yvmin','subculture-punk','domiverse','solove','borodenko','symbols-mcqueen','abra','karizma','stingy-jack','sorelle-era','manson','symbols-dior','pps','subculture-emo','saint-tokyo','tour','xose'];const list=cat==='all'?ALL.map(k=>P.find(p=>p.s===k)).filter(Boolean).concat(P.filter(p=>!ALL.includes(p.s))):P.filter(p=>cats(p).includes(cat));
-  document.getElementById('work-grid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">Coming soon.</div>';
+  const gal=list.length===1&&list[0].gallery?list[0]:null;
+  document.getElementById('work-grid').innerHTML=gal?gal.imgs.map((n,i)=>`<a class="card tile" href="#" data-lb="${i}"><div class="img">${n.startsWith('video')?`<video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/work/${gal.s}/${n}.jpg"><source src="media/work/${gal.s}/${n}.mp4" type="video/mp4"></video>`:`<img class="pic-img" src="media/work/${gal.s}/${n}.jpg" alt="${gal.t}" loading="lazy">`}</div></a>`).join(''):list.length?list.map(card).join(''):'<div class="empty">Coming soon.</div>';
+  if(gal){document.querySelectorAll('#work-grid [data-lb]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openLB(gal,+a.dataset.lb);}));}
   const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;e.isIntersecting?v.play().catch(()=>{}):v.pause();}),{rootMargin:'200px'});document.querySelectorAll('#work-grid video').forEach(v=>io.observe(v));
 }
 function renderProject(slug){
