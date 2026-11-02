@@ -419,7 +419,7 @@ function show(id,nav){document.body.classList.toggle('snap',id==='home');pages.f
 
 let LB=null;const lbEl=document.getElementById('lb');
 function openLB(p,i){LB={p,i};drawLB();lbEl.classList.add('on');document.body.style.overflow='hidden';}
-function drawLB(){const {p,i}=LB;const n=p.imgs[i];lbEl.querySelector('.lb-body').innerHTML=n.startsWith('video')?`<video src="media/work/${p.s}/${n}.mp4" poster="media/work/${p.s}/${n}.jpg" controls autoplay playsinline></video>`:`<img src="media/work/${p.s}/${n}.jpg" alt="${p.t}">`;lbEl.querySelector('.lb-cnt').textContent=(i+1)+' / '+p.imgs.length;}
+function drawLB(){const {p,i}=LB;const n=p.imgs[i];lbEl.querySelector('.lb-body').innerHTML=n.startsWith('video')?`<video src="media/work/${p.s}/${n}.mp4" poster="media/work/${p.s}/${n==='video'?'poster':n}.jpg" controls autoplay playsinline></video>`:`<img src="media/work/${p.s}/${n}.jpg" alt="${p.t}">`;lbEl.querySelector('.lb-cnt').textContent=(i+1)+' / '+p.imgs.length;}
 function closeLB(){lbEl.classList.remove('on');lbEl.querySelector('.lb-body').innerHTML='';document.body.style.overflow='';LB=null;}
 function stepLB(d){if(!LB)return;LB.i=(LB.i+d+LB.p.imgs.length)%LB.p.imgs.length;drawLB();}
 lbEl.querySelector('.lb-x').onclick=closeLB;lbEl.querySelector('.lb-l').onclick=()=>stepLB(-1);lbEl.querySelector('.lb-r').onclick=()=>stepLB(1);
@@ -450,6 +450,7 @@ function renderProject(slug){
      <div><h4>CREDITS</h4><div class="cr"><b>BRAND</b><span>${p.cl}</span><b>ROLE</b><span>${p.role}</span><b>TEAM</b><span>One person. No crew.</span><b>FORMAT</b><span>${CATS[p.c]}</span></div></div>
    </div>`;
   document.querySelectorAll('#proj [data-open]').forEach(a=>a.addEventListener('click',open));
+  document.querySelectorAll('#proj .fr > img').forEach((im,k)=>{im.style.cursor='zoom-in';im.addEventListener('click',()=>{const idx=[...document.querySelectorAll('#proj .fr')].indexOf(im.parentElement);openLB(p,idx);});});
   document.querySelectorAll('#proj .vid').forEach(w=>{const v=w.querySelector('video'),b=w.querySelector('.play');b.onclick=()=>{v.muted=false;v.volume=1;v.play();};v.addEventListener('play',()=>w.classList.add('on'));v.addEventListener('pause',()=>w.classList.remove('on'));});
   // strip behaviour
   const strip=document.getElementById('strip'),rail=document.getElementById('rail'),cnt=document.getElementById('cnt');
