@@ -242,6 +242,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
 #lb .lb-cnt{position:absolute;right:20px;bottom:18px;color:var(--white);font-family:var(--display);font-size:18px;letter-spacing:.1em}
 .card.tile .img{aspect-ratio:4/5}.card.tile video{width:100%;height:100%;object-fit:cover;display:block}.card.tile:hover .img::after{box-shadow:inset 0 0 0 6px var(--red)}
 .pic.fade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;opacity:0;transition:opacity 1.2s ease}.pic.fade img.on{opacity:1}
+.snd{position:absolute;right:24px;bottom:24px;z-index:6;background:var(--red);color:var(--white);border:0;outline:3px solid var(--white);font-family:var(--display);font-size:18px;letter-spacing:.14em;padding:12px 18px;cursor:pointer}.snd:hover{background:var(--blue)}
 </style>
 </head>
 <body>
@@ -279,7 +280,7 @@ body.open .overlay{opacity:1;pointer-events:auto}body.open .drawer{transform:non
     <a class="more" href="#manifesto">MANIFESTO →</a>
   </section>
   <section class="panel" data-tone="white">
-    <div class="fill"><video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/home/showreel-poster.jpg" style="width:100%;height:100%;object-fit:cover"><source src="media/home/showreel.mp4" type="video/mp4"></video></div>
+    <div class="fill"><video class="pic-img" autoplay muted loop playsinline preload="metadata" poster="media/home/showreel-poster.jpg" style="width:100%;height:100%;object-fit:cover"><source src="media/home/showreel.mp4" type="video/mp4"></video><button class="snd" id="reelSnd" type="button" aria-label="Sound">SOUND ON</button></div>
     <div class="txt"><h2>Showreel</h2></div>
   </section>
   <section class="modelblk" data-tone="white">
@@ -425,6 +426,7 @@ lbEl.addEventListener('click',e=>{if(e.target===lbEl)closeLB();});
 addEventListener('keydown',e=>{if(!LB)return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')stepLB(-1);if(e.key==='ArrowRight')stepLB(1);});
 {let x0=0;lbEl.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});lbEl.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)stepLB(dx<0?1:-1);});}
 setInterval(()=>{document.querySelectorAll('.pic.fade').forEach(w=>{const im=[...w.querySelectorAll('img')];const i=im.findIndex(x=>x.classList.contains('on'));im[i].classList.remove('on');im[(i+1)%im.length].classList.add('on');});},4500);
+{const b=document.getElementById('reelSnd');if(b){const v=b.parentElement.querySelector('video');b.onclick=()=>{v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play().catch(()=>{});}b.textContent=v.muted?'SOUND ON':'SOUND OFF';};}}
 function renderWork(cat){
   if(!CATS[cat])cat='all';
   document.getElementById('work-title').textContent=cat==='all'?'Work':CATS[cat];
